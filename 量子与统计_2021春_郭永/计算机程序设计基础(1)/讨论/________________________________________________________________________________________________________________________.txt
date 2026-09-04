@@ -1,0 +1,253 @@
+课程：计算机程序设计基础（1）
+内容：老师，这一题的循环太复杂，判断也多，我迷了，不会把最后一个数后逗号去掉，怎么改呢
+学号：bf6529280736e929687ad22d3394e364
+姓名：赵方敏
+发布时间:2019-10-29 00:19:44
+最后回复：孙甲松
+回复时间：2019-10-31 22:53:30
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic老师，这一题的循环太复杂，判断也多，我迷了，不会把最后一个数后逗号去掉，怎么改呢
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+赵方敏
+
+
+
+
+#include<stdio.h> #include<math.h> main() {     int a = 999, b = 2, k1, k2,s=0,x=0,y=0,flag,m=2;     printf("最小素数：");     for(;(x<10)&&(b<=1000);b=b+1)     {             k1 = (int)sqrt((double)b); flag = 0; m = 2;             while ((m <= k1) && (flag == 0))             {                 if (b % m == 0)flag = 1;                 m = m + 1;             }             if (flag == 0)             {                 printf("%d,", b);                 x = x + 1; s = s + b;             }
+    }     printf("\n最大素数：");     for (; (y < 10) && (a >= 0); a = a - 2)     {   k2 = (int)sqrt((double)a); flag = 0; m = 2;         while ((m <= k2) && (flag == 0))         {             if (a % m == 0) flag = 1;             m = m + 1;         }         if (flag == 0)         {             if (a > b)             {                 printf("%d,", a);                 s = s + a;                 y = y + 1;             }             if (a == b)             {                 printf("%d,", a);                 y = y + 1;                 printf("(重复）");             }
+        }         
+             }     printf("\n素数之和:%d", s);     if (x != 10) printf("不够十个素数"); }
+
+
+
+Reply
+
+Starter： 2019-10-29 00:19
+
+
+
+
+
+
+
+
+
+钟敏朝
+
+
+
+
+
+
+ 
+ 
+   最后一个数其实不好判断，可以考虑用if和一个flag让第一个数不打逗号
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-10-29 07:50
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">可以把：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (flag == 0)</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("%d,", b);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x = x + 1; s = s + b;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">改为：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (flag == 0)</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;&nbsp; if(x==0)</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("%d", b);&nbsp; /* 输出第一个数 */</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;printf(",%d", b);&nbsp; /* 其余数前输出一个逗号 */</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x = x + 1; s = s + b;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+2#：2019-10-31 22:53
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		2
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   76
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

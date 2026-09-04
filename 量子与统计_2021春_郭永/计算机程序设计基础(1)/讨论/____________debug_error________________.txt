@@ -1,0 +1,205 @@
+课程：计算机程序设计基础（1）
+内容：如何关闭debug error 及其它问题
+学号：8dca1b4615305db49396e54b0878343c
+姓名：廖俊宇
+发布时间:2019-10-24 13:33:54
+最后回复：孙甲松
+回复时间：2019-10-24 18:56:07
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic如何关闭debug error 及其它问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+廖俊宇
+
+
+
+
+在有些情况下不对变量定义仍能得出答案，但是在生成解决方案和调试时会出现warning和debug error，如何关闭debug error直接而得出结果？
+例如：
+# include<stdio.h> main() {  int a=3, b=4, c=5, k;    int x, y;    k = !(x==a)&&(y==b)&&0;    printf("k= %d", k); }
+ 
+warning：
+1>c:\users\12961\documents\visual studio 2012\projects\テスト４\テスト４\テスト４.c(5): warning C4700: 使用了未初始化的局部变量“x” 1>c:\users\12961\documents\visual studio 2012\projects\テスト４\テスト４\テスト４.c(5): warning C4700: 使用了未初始化的局部变量“y”  
+调试时会出现如附件所示的提示，此时需要连续选择两次忽略才会得出最终结果：
+k= 0请按任意键继续. . .
+有没有什么办法直接跳过呢？  
+问题2：
+(sin(x*x+y*y))*(cos(x+y)）  和
+sin(x*x+y*y)*cos(x+y）
+等价么？
+如果想用角度制而不是弧度制的x，y该怎么办？
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+1024.PNG31.58K Down
+
+
+
+
+
+
+
+
+Reply
+
+Starter： 2019-10-24 13:33
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>变量未赋初值就使用确实编译时会被警告，运行时出错提示未初始化，尤其是实数必定出错，因为未初始化的实数是随机值，CPU计算时会溢出产生错误。 这类运行错误无法跳过。</p> 
+  <p>(sin(x*x+y*y))*(cos(x+y)） 和 sin(x*x+y*y)*cos(x+y) 等价。</p> 
+  <p>如果x是角度，x/180.0*3.1415926 就转换成了弧度，写成 sin(x/180.0*3.1415926) 即可。</p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-10-24 18:56
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   37
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

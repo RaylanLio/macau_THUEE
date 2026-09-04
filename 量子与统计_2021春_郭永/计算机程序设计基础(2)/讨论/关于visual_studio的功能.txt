@@ -1,0 +1,183 @@
+课程：计算机程序设计基础（2）
+内容：关于visual studio的功能
+学号：53ba8a8ad0cc079892277ce5c501406c
+姓名：侯启钧
+发布时间:2020-04-09 13:31:51
+最后回复：孙甲松
+回复时间：2020-04-09 16:06:33
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic关于visual studio的功能
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+侯启钧
+
+
+
+
+vs新建代码文件时“新建”选项里有“类”的选项，请问这个功能是否可以使用？如何使用？
+或者是否可以把类的定义写在另一个源文件中方便程序阅读？
+
+
+
+ 
+  
+
+
+ 
+    
+
+
+
+
+
+Reply
+
+Starter： 2020-04-09 13:31
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>现在最好不要使用VS新建代码文件时“新建”选项里“类”的选项，这涉及到MFC图形类库，不是一两句话能说清楚的，等本学期最后一次课我会给大家讲一下“<span style="font-size:10.5pt">MFC类库与Windows程序</span>”。</p> 
+  <p>可以把类的定义写在另一个源文件中方便调用和程序阅读，但一般都是放在.h的头文件中，这类文件只能被引用，不能独立编译。</p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2020-04-09 16:06
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   51
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

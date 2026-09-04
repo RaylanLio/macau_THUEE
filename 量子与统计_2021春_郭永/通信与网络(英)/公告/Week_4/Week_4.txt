@@ -1,0 +1,11 @@
+题目: Week 4
+发布人: 贾宇宽
+发布时间: 2022-03-14 23:48
+
+内容: Today we learned the rest of Quantization and Pulse Code Modulation (PCM). 
+Lloyd-Max conditions are the necessary and sufficient conditions for a quantizer to be optimal. There are also non-uniform quantizer designs that are widely used in real-world systems, such as 13-piece A-law quantizer.
+The last part, encoding, turns a discrete value into a bit sequence. So far, analog signals are transformed to bit sequences with specific bit-rate, e.g. 64kbps for voice, 1411kbps for Audio CD.
+One of the most important parts of the semester, baseband modulation, opens this week.
+Relationship: Bit sequence -> Symbol sequence -> Waveforms
+ 
+Reminder: Problem Set 2 is released, due next Sunday. 

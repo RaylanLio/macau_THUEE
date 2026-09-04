@@ -1,0 +1,375 @@
+课程：计算机程序设计基础（1）
+内容：关于用malloc分配内存后的警告
+学号：f8db51167f416a1d422cfb84bc05b75d
+姓名：范怡然
+发布时间:2019-12-20 22:09:58
+最后回复：孙甲松
+回复时间：2019-12-21 19:45:30
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic关于用malloc分配内存后的警告
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+范怡然
+
+
+
+
+程序可正常运行，但多处出现警告，请问这个警告所指的溢出是怎么回事？
+“警告    C6386    写入到“q”时缓冲区溢出: 可写大小为“sizeof(student *)*n”个字节，但可能写入了“8”个字节。 73    ”
+练习11.2
+#include<stdio.h>
+#include<stdlib.h>
+#pragma warning(disable:4996)
+ 
+struct student
+{
+    int num;
+    char name[15];
+    int grade[5];
+    int sum;
+};//定义结构体
+ 
+int main()
+{
+    student* p, * Alloc(int n), * sumup(student * p, int n);//函数声明：两个返回指针类型（Alloc和sumup），两个为void类型
+    int n = 0;//学生人数n
+    void sort(student * p, int n), showinfo(student * p, int n);
+ 
+    printf("Please input the number of student(no more than 20):\n");
+    scanf("%d", &n);
+    while (n > 20 || n < 0)
+    {
+        printf("Invalid number!");
+        printf("Please input the number of student(no more than 20):\n");
+        scanf("%d", &n);
+    }//判断n是否满足要求，不满足则重新输入
+    p = Alloc(n);//让p指向分配的n个值的地址
+    p = sumup(p, n);//计算p中的sum
+    printf("\n");
+    sort(p, n);
+    printf("\n");
+    showinfo(p, n);
+    return 0;
+}
+ 
+student* Alloc(int n)
+{
+    student* p = (student*)malloc(sizeof(student) * n);//分配一个大小为n的student类型数组
+    if (p == NULL)
+    {
+        printf("Can't get memory!\n");
+        exit(1);
+    }
+    printf("Please input the information of each student in the order of number, name and grades for 5 subjects:\n");
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%d%s", &p[i].num, &p[i].name);//则p[i]为各个数组元素
+        for (int j = 0; j < 5; j++)
+             scanf("%d", &p[i].grade[j]);
+        p[i].sum = 0;
+    }
+    return p;
+}
+ 
+student* sumup(student* p, int n)
+{
+    for (int j = 0; j < n; j++)
+        for (int i = 0; i < 5; i++)
+             p[j].sum += p[j].grade[i];
+    return p;
+}
+ 
+void sort(student* p, int n)
+{
+    student* w;
+    student** q = (student * *)malloc(sizeof(student*) * n);//定义大小为n的指针数组q，让q中的各元素指向p中的各元素
+    if (q == NULL)
+    {
+        printf("Can't get memory!\n");
+        exit(0);
+    }
+    for (int i = 0; i < n; i++)
+        q[i] = &p[i];
+    for (int i = 0; i < n - 1; i++)
+    {
+        int k = i;
+        for (int j = i + 1; j < n; j++)
+             if (q[k]->sum < q[j]->sum)
+                 k = j;//选取出当前最小的元素对应的下标k
+        if (k != i)
+             w = q[i], q[i] = q[k], q[k] = w;//交换指针
+    }
+    for (int i = 0; i < n; i++)
+    {
+        printf("%-10d%-10s", q[i]->num, q[i]->name);
+        for (int j = 0; j < 5; j++)
+             printf("%-4d", q[i]->grade[j]);
+        printf("%d\n", q[i]->sum);
+    }
+    return;
+}
+ 
+void showinfo(student* p, int n)
+{
+    int stu, flag = 1;
+    printf("Please input the number of student:\n");
+    scanf("%d", &stu);
+    for (int i = 0; flag && i < n; i++)
+        if (p[i].num == stu)//寻找和输入的学号相同的元素，若找到则置flag为0，输出信息并退出循环
+        {
+             flag = 0;
+             printf("%-10d%-10s", p[i].num, p[i].name);
+             for (int j = 0; j < 5; j++)
+                 printf("%-4d", p[i].grade[j]);
+             printf("%d\n", p[i].sum);
+        }
+    if (flag)//若退出循环后仍未找到，输出提示信息
+        printf("No student with this number!\n");
+    return;
+}
+
+
+
+Reply
+
+Starter： 2019-12-20 22:09
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  能否把源程序贴上来？
+ 
+
+
+
+
+Reply(1)
+Collapse
+
+1#：2019-12-20 19:04
+
+
+
+
+
+
+
+
+范怡然： 
+ 
+ 
+  十分抱歉，现已补粘贴！！
+ 
+
+
+
+
+
+2019-12-20 23:11
+Reply
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>我把你的程序稍微修改一下，使之成为真正的C程序：</p> 
+  <p>#include&lt;stdio.h&gt;<br> #include&lt;stdlib.h&gt;<br> #pragma warning(disable:4996)<br> <strong>typedef</strong> struct student<br> {<br> &nbsp;&nbsp;&nbsp; int num;<br> &nbsp;&nbsp;&nbsp; char name[15];<br> &nbsp;&nbsp;&nbsp; int grade[5];<br> &nbsp;&nbsp;&nbsp; int sum;<br> }<strong>student</strong>;//定义结构体<br> int main()<br> {<br> &nbsp;&nbsp;&nbsp; student *p, *Alloc(int n), *sumup(student *p, int n); //函数声明：两个返回指针类型（Alloc和sumup），两个为void类型<br> &nbsp;&nbsp;&nbsp; int n = 0;//学生人数n<br> &nbsp;&nbsp;&nbsp; void sort(student * p, int n), showinfo(student * p, int n);<br> &nbsp;&nbsp;&nbsp; printf("Please input the number of student(no more than 20):\n");<br> &nbsp;&nbsp;&nbsp; scanf("%d", &amp;n);<br> &nbsp;&nbsp;&nbsp; while (n &gt; 20 || n &lt; 0)<br> &nbsp;&nbsp;&nbsp; {<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("Invalid number!");<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("Please input the number of student(no more than 20):\n");<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; scanf("%d", &amp;n);<br> &nbsp;&nbsp;&nbsp; }//判断n是否满足要求，不满足则重新输入<br> &nbsp;&nbsp;&nbsp; p = Alloc(n);//让p指向分配的n个值的地址<br> &nbsp;&nbsp;&nbsp; p = sumup(p, n);//计算p中的sum<br> &nbsp;&nbsp;&nbsp; printf("\n");<br> &nbsp;&nbsp;&nbsp; sort(p, n);<br> &nbsp;&nbsp;&nbsp; printf("\n");<br> &nbsp;&nbsp;&nbsp; showinfo(p, n);<br> &nbsp;&nbsp;&nbsp; return 0;<br> }<br> student* Alloc(int n)<br> {&nbsp;&nbsp; int i,j;<br> &nbsp;&nbsp;&nbsp; student* p = (student*)malloc(sizeof(student) * n);//分配一个大小为n的student类型数组<br> &nbsp;&nbsp;&nbsp; if (p == NULL)<br> &nbsp;&nbsp;&nbsp; {<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("Can't get memory!\n");<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit(1);<br> &nbsp;&nbsp;&nbsp; }<br> &nbsp;&nbsp;&nbsp; printf("Please input the information of each student in the order of number, name and grades for 5 subjects:\n");<br> &nbsp;&nbsp;&nbsp; for (i = 0; i &lt; n; i++)<br> &nbsp;&nbsp;&nbsp; {<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; scanf("%d%s", &amp;p[i].num, &amp;p[i].name);//则p[i]为各个数组元素<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for ( j= 0; j &lt; 5; j++)<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; scanf("%d", &amp;p[i].grade[j]);<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p[i].sum = 0;<br> &nbsp;&nbsp;&nbsp; }<br> &nbsp;&nbsp;&nbsp; return p;<br> }<br> student* sumup(student* p, int n)<br> {&nbsp; int i,j;<br> &nbsp;&nbsp; for (j = 0; j &lt; n; j++)<br> &nbsp;&nbsp;&nbsp;&nbsp; for (i = 0; i &lt; 5; i++)<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p[j].sum += p[j].grade[i];<br> &nbsp;&nbsp;&nbsp; return p;<br> }<br> void sort(student* p, int n)<br> {&nbsp;&nbsp; int i,j;<br> &nbsp;&nbsp;&nbsp; student* w;<br> &nbsp;&nbsp;&nbsp; student** q = (student * *)malloc(sizeof(student*) * n);//定义大小为n的指针数组q，让q中的各元素指向p中的各元素<br> &nbsp;&nbsp;&nbsp; if (q == NULL)<br> &nbsp;&nbsp;&nbsp; {<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("Can't get memory!\n");<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit(0);<br> &nbsp;&nbsp;&nbsp; }<br> &nbsp;&nbsp;&nbsp; for ( i = 0; i &lt; n; i++)<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; q[i] = &amp;p[i];<br> &nbsp;&nbsp;&nbsp; for ( i = 0; i &lt; n - 1; i++)<br> &nbsp;&nbsp;&nbsp; {<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int k = i;<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for ( j = i + 1; j &lt; n; j++)<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (q[k]-&gt;sum &lt; q[j]-&gt;sum)<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; k = j;//选取出当前最小的元素对应的下标k<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (k != i)<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; w = q[i], q[i] = q[k], q[k] = w;//交换指针<br> &nbsp;&nbsp;&nbsp; }<br> &nbsp;&nbsp;&nbsp; for (i = 0; i &lt; n; i++)<br> &nbsp;&nbsp;&nbsp; {<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("%-10d%-10s", q[i]-&gt;num, q[i]-&gt;name);<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for ( j = 0; j &lt; 5; j++)<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("%-4d", q[i]-&gt;grade[j]);<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("%d\n", q[i]-&gt;sum);<br> &nbsp;&nbsp;&nbsp; }<br> &nbsp;&nbsp;&nbsp; return;<br> }<br> void showinfo(student* p, int n)<br> {&nbsp;&nbsp; int i,j;<br> &nbsp;&nbsp;&nbsp; int stu, flag = 1;<br> &nbsp;&nbsp;&nbsp; printf("Please input the number of student:\n");<br> &nbsp;&nbsp;&nbsp; scanf("%d", &amp;stu);<br> &nbsp;&nbsp;&nbsp; for (i = 0; flag &amp;&amp; i &lt; n; i++)<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (p[i].num == stu)//寻找和输入的学号相同的元素，若找到则置flag为0，输出信息并退出循环<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; flag = 0;<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("%-10d%-10s", p[i].num, p[i].name);<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for ( j = 0; j &lt; 5; j++)<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("%-4d", p[i].grade[j]);<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("%d\n", p[i].sum);<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br> &nbsp;&nbsp;&nbsp; if (flag)//若退出循环后仍未找到，输出提示信息<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("No student with this number!\n");<br> &nbsp;&nbsp;&nbsp; return;<br> }</p> 
+  <p>运行结果：</p> 
+  <p>Please input the number of student(no more than 20):<br> 3<br> Please input the information of each student in the order of number, name and grades for 5<br> &nbsp;subjects:<br> 1 aaa 1 2 3 4 5<br> 2 vvv 3 4 5 4 5<br> 3 ccc 1 2 2 3 4</p> 
+  <p>2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vvv&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp; 4&nbsp;&nbsp; 5&nbsp;&nbsp; 4&nbsp;&nbsp; 5&nbsp;&nbsp; 21<br> 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; aaa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp; 2&nbsp;&nbsp; 3&nbsp;&nbsp; 4&nbsp;&nbsp; 5&nbsp;&nbsp; 15<br> 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ccc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp; 2&nbsp;&nbsp; 2&nbsp;&nbsp; 3&nbsp;&nbsp; 4&nbsp;&nbsp; 12</p> 
+  <p>Please input the number of student:<br> 1<br> 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; aaa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp; 2&nbsp;&nbsp; 3&nbsp;&nbsp; 4&nbsp;&nbsp; 5&nbsp;&nbsp; 15<br> 请按任意键继续. . .</p> 
+  <p>&nbsp;</p> 
+  <p>没出现任何问题。</p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+2#：2019-12-21 19:45
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		3
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   47
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,288 @@
+课程：计算机程序设计基础（1）
+内容：作业题12.6问题
+学号：fa5cdfcf945d791f6e952bcde2a05f23
+姓名：张凯
+发布时间:2019-12-17 21:02:59
+最后回复：张凯
+回复时间：2019-12-18 18:45:46
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic作业题12.6问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+张凯
+
+
+
+
+按照作业题要求，写的代码如下：
+#include <stdio.h>
+#include <stdlib.h>
+   struct student {
+    char num[7];
+    char name[8];
+    char gender[3];
+    char age[5];
+    char grade[9];
+};
+int main( )
+{
+    int i;
+    struct student stu[10]={
+        {'101','Zhang','M','19','95.6'},
+        {'102','Wang','F','18','92.4'},
+        {'103','Zhao','M','19',85.7},
+        {'104','Li','M','20','96.3'},
+        {'105','Gao','M','19','90.2'},
+        {'106','Lin','M','18','91.5'},
+        {'107','Ma','F','17','98.7'},
+        {'108','Zhen','M','21','90.1'},
+        {'109','Xu','M','19','89.5'},
+        {'110','Mao','F','18','94.5'},
+    };
+    FILE *fp;
+    fp=fopen("stu.dat", "w+b");
+    fwrite(stu, sizeof(struct student), 10, fp);
+    fclose(fp);
+    fp=fopen("stu.dat", "r+b");
+    if((fp=fopen("stu.dat", "r+b"))==NULL)
+        printf("Cannot open the file!\n"),exit(0);
+    struct student a[10];
+    fread(a, sizeof(struct student),10,fp);
+    fclose(fp);
+    for (i=0; i<10; i++) {
+   printf("%-8s%-8s%-6s%-6s %-9s\n",a[i].num,a[i].name,a[i].gender,a[i].age,a[i].grade);
+    }
+}
+结果：
+1gM96                                    
+2gF84                                    
+3oM9U                                    
+4iM03                                    
+5oM92                                    
+6nM85                                    
+7aF77                                    
+8nM11                                    
+9uM95                                    
+0oF85                                    
+Program ended with exit code: 0
+运行后，结果不对，请问是什么原因呢？
+
+
+
+Reply
+
+Starter： 2019-12-17 21:02
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">你把赋初值中&nbsp; {'101','Zhang','M','19','95.6'}, 的单引号统统都改为双引号，都是字符串！</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-12-18 17:28
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+张凯
+
+
+
+
+
+
+ 
+ 
+  谢谢老师
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+2#：2019-12-18 18:45
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		2
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   58
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

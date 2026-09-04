@@ -1,0 +1,383 @@
+课程：计算机程序设计基础（2）
+内容：关于类型兼容性原则
+学号：5c93f94e69dc08935c7c9d45baeed4d9
+姓名：杨启泽
+发布时间:2020-03-31 22:53:13
+最后回复：杨启泽
+回复时间：2020-04-07 10:08:34
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic关于类型兼容性原则
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+杨启泽
+
+
+
+
+
+
+
+ 
+  
+这张PPT自己在复习的时候有点不明白，网上搜索了之后搜到了一组关于类型兼容性的描述
+1.子类对象可以当作父类对象使用
+2.子类对象可以直接赋值给父类对象
+3.子类对象可以直接初始化父类对象
+4.父类指针可以直接指向子类对象
+5.父类引用可以直接引用子类对象
+这些是为什么呢？可以怎么理解呢？
+ 
+
+
+
+Reply
+
+Starter： 2020-03-31 22:53
+
+
+
+
+
+
+
+
+
+杨启泽
+
+
+
+
+
+
+ 
+ 
+  附加一个问题 加上virtual函数之后，this指针通过虚数表如何判断调用哪一个函数呢？
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2020-03-31 22:57
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">这里父类是指基类，子类是指派生类，所以可以改为：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">（1）派生类对象可以当作基类对象使用</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">（2）派生类对象可以直接赋值给基类对象</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">（3）派生类对象可以直接初始化基类对象</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">（4）基类引用可以直接引用派生类对象</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">（5）基类指针可以直接指向派生类对象</span></p> 
+  <table border="1" class="MsoTableGrid" style="border-collapse:collapse; border:solid windowtext 1.0pt; margin-left:13.95pt"> 
+   <tbody> 
+    <tr> 
+     <td style="vertical-align:top; width:42.5pt"> <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Base</span></p> </td> 
+     <td style="vertical-align:top; width:49.65pt"> <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Drived</span></p> </td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">一个派生类对象中总是包含基类部分，在内存分布上，基类部分在前面，这样基类部分的起始地址与整个派生类的其实地址是一致的。因此：基类指针可以直接指向派生类对象，基类引用可以直接引用派生类对象的基类部分。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Rectangle::Rectangle(const Rectangle &amp;p) : Shape(p) </span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">是很典型的第（1）种，把派生类对象当作基类对象使用，让基类Shape的复制构造函数从派生类Rectangle的对象p中复制构造其基类Shape部分。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp; Drived d;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp; Base b;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp; b=d;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">是第（2）种，直接赋值。把等号右边的派生类对象d，赋值给等号左边的基类对象b时，仅仅是把派生类中来自于基类的那一部分成员，赋值给等号左边的基类对象。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp; Drived d;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp; Base b(d);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">是第（3）种，直接初始化。用派生类对象d直接给定义的基类对象b赋初值，当然仅仅是把派生类对象d中来自于基类的那一部分成员，复制构造赋值给基类对象b。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp; Derived d;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp; Base &amp;b=d;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">是第（4）种，引用赋值。把等号右边的派生象d，赋值给等号左边的基类b的引用，直接初始化了基类的引用。可以把派生类中的基类部分当做一个基类对象b来访问。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Derived d;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Base *b=&amp;d;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">是第（5）种，指针赋值。让基类的指针指向派生类对象，这个和上边的引用类似。b-&gt;只能访问基类部分的成员函数。</span></p> 
+ 
+
+
+
+
+Reply(1)
+Collapse
+
+2#：2020-04-02 17:27
+
+
+
+
+
+
+
+
+杨启泽： 
+ 
+ 
+  谢谢老师！
+ 
+
+
+
+
+
+2020-04-07 10:08
+Reply
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p><span style="font-size:10.5pt">变为</span><span style="font-size:10.5pt">virtual</span><span style="font-size:10.5pt">函数之后，</span><span style="font-size:10.5pt">this</span><span style="font-size:10.5pt">指针通过当前类的虚函数表（</span><span style="font-size:10.5pt">vtable</span><span style="font-size:10.5pt">）调用本类的虚函数。可以这么理解，过去的函数调用都是直接给函数的内存入口（起始）地址，属于静态束定，编译时就直接确定了。而虚函数是间接调用，编译时只是给出此函数在虚函数表中的相对位置（同族的虚函数在每一个类中的相对位置相同），虚函数表中相应位置存放的是本类此虚函数的入口地址。所以这是动态束定，程序运行时由本类对象的</span><span style="font-size:10.5pt">this</span><span style="font-size:10.5pt">指针确定访问相应类的虚函数表，取得相应虚函数的入口地址再执行。</span></p> 
+ 
+
+
+
+
+Reply(1)
+Collapse
+
+3#：2020-04-02 20:06
+
+
+
+
+
+
+
+
+杨启泽： 
+ 
+ 
+  谢谢老师！ 
+ 
+
+
+
+
+
+2020-04-07 10:08
+Reply
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		5
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   53
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

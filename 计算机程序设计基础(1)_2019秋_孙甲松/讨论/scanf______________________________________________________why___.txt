@@ -1,0 +1,191 @@
+课程：计算机程序设计基础（1）
+内容：scanf中有逗号，输入时加了逗号也读不进去，why？
+学号：9674be8fbb85d1b0cccafb7b8d7134fa
+姓名：董佳林
+发布时间:2019-10-03 09:45:39
+最后回复：董佳林
+回复时间：2019-10-06 19:50:53
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topicscanf中有逗号，输入时加了逗号也读不进去，why？
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+董佳林
+
+
+
+
+#include <stdio.h> #define _CRT_SECRUE_NO_WARNINGS #pragma  warning(disable:4996) main() {     int a,b,c;     scanf("%i,%i,%i", &a, &b, &c);     printf("%d %d %d", a, b, c);      }
+调试：（逗号已紧跟数字后）
+1，2，3<CR>         1 -858993460 -858993460
+
+
+
+Reply
+
+Starter： 2019-10-03 09:45
+
+
+
+
+
+
+
+
+
+陈弘毅
+
+
+
+
+
+
+ 
+ 
+  中文逗号和英文逗号的区别吧
+ 
+
+
+
+
+Reply(1)
+Collapse
+
+1#：2019-10-06 19:38
+
+
+
+
+
+
+
+
+董佳林： 
+ 
+ 
+  还真是，我又重新打了一遍，这回没问题了，thank you
+ 
+
+
+
+
+
+2019-10-06 19:50
+Reply
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		2
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   70
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

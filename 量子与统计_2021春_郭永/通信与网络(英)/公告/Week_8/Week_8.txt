@@ -1,0 +1,9 @@
+题目: Week 8
+发布人: 贾宇宽
+发布时间: 2022-04-11 23:18
+
+内容: This week we introduce the passband modulation system. To reuse the knowledge from baseband transmissions, we use the complex baseband signals to represent the original passband signals. Note that the actually transmitted waveform must be real. 
+Then we introduce ASK (Amplitude Shift Keying), and PSK (Phase Shift Keying) as the two simplest passband modulation methods. The equivalent baseband signals of PSK represent complex numbers on a circle. In the passband, we have constellations (complex symbols) on the 2-d complex plane, and in the baseband, the real symbols are on the 1-d axis. QAM (Quadrature Amplitude Modulation) is a 2-dimensional generalization of ASK, with the baseband waveform shifted to the carrier frequency.
+Finally, the coherent demodulators are designed using the property of orthogonality, while the non-coherent ones are based on envelope detection.
+ 
+Reminder: Check the announcement of the midterm exam. The report for experiment 1 is due this Sunday. 

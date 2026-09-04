@@ -1,0 +1,173 @@
+课程：计算机程序设计基础（1）
+内容：关于命令行读入空格的问题
+学号：52d56ab754db4af698a27df36a3f933b
+姓名：肖嘉昕
+发布时间:2019-11-25 17:09:05
+最后回复：孙甲松
+回复时间：2019-11-26 20:50:48
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic关于命令行读入空格的问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+肖嘉昕
+
+
+
+
+老师好，请问如何让系统读入在命令行中输入的空格？以及，如果输入了引号“”，似乎也没法打印出来，这是为什么？  谢谢！
+
+
+
+Reply
+
+Starter： 2019-11-25 17:09
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>如果原来的命令行是： c:\&gt; file&nbsp; THIS&nbsp; IS&nbsp; OUR&nbsp; FINAL&nbsp; EXAMINE</p> 
+  <p>这样就输入了5个命令行参数，argc值为6，命令行参数之间用空格分割，如果想把空格也输入进去，可以改为：</p> 
+  <p>c:\&gt; file&nbsp; &nbsp;"THIS IS" "OUR FINAL" EXAMINE</p> 
+  <p>这样命令行参数为3个，"THIS IS" 和 "OUR FINAL" 分别是一个命令行参数，argv[1]中是"THIS IS"字符串， argv[2]中是 "OUR FINAL"字符串。</p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-11-26 20:50
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   35
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

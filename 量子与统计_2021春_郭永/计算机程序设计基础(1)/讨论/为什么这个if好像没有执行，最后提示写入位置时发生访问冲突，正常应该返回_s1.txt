@@ -1,0 +1,174 @@
+课程：计算机程序设计基础（1）
+内容：为什么这个if好像没有执行，最后提示写入位置时发生访问冲突，正常应该返回*s1
+学号：9c3ecd7584aa9e0b596646a261fc977f
+姓名：张庚瀚
+发布时间:2019-11-23 14:35:30
+最后回复：孙甲松
+回复时间：2019-11-23 17:58:00
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic为什么这个if好像没有执行，最后提示写入位置时发生访问冲突，正常应该返回*s1
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+张庚瀚
+
+
+
+
+#include<stdio.h> #include<stdlib.h> #include<string.h> char *my_replace(char *s1,char *s2,char *s3) {
+    char *a,*b,*d;     char c[10000],e[10000]={0};     int k,t;     a=s1;     b="z";     d="z";     if(strstr(s1,s2)=="NULL")     {return(s1);}
+    else{             while(strstr(a,s2)!="NULL")             {                 if(strlen(a)>=strlen(s2))                 {                     char c[10000]={0};                     strncpy(c,a,strlen(a));//把一个字符串赋给数组                     c[strlen(a)]='\0';                     k=strstr(a,s2)-a;//可以用来复制相同之前的字符串                     c[k]='\0';                     b=c;                     strcat(b,s3);                     strncpy(c,b,strlen(b));//把一个字符串赋给数组                     c[strlen(b)]='\0';                     a=a+k+strlen(s2);                     d=c;                     strcat(e,d);                 }                 else                 {strcat(e,a);break;}             }             return(e);         } } main()//int n,char *s[]) { char *my_replace(char *s1,char *s2,char *s3); char *s1="qweswsws",*s2="io",*s3="h"; printf("%s",my_replace(s1,s2,s3)); system("pause"); }
+
+
+
+Reply
+
+Starter： 2019-11-23 14:35
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">编译时出现警告错误：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">test.c(35) : warning C4172: 返回局部变量或临时变量的地址</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">是指语句&nbsp; return(e); 返回my_replace函数中的局部数组e的首地址，这是不允许的，因为局部数组在栈上所占的内存，在函数执行完立刻就会被释放掉，返回局部数组e的首地址已经无济于事，无法把替换后的字符串正确打印出来。而且你的程序运行出现致命错误，你重新理一下思路。定义局部数组 char c[10000],e[10000]={0}; 是不正确的，替换后的字符串长度一定不超过10000吗？</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-11-23 17:58
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   29
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

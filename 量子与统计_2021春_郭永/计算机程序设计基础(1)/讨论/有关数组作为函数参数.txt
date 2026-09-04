@@ -1,0 +1,173 @@
+课程：计算机程序设计基础（1）
+内容：有关数组作为函数参数
+学号：3b1cbfed31422cde4a28252e866b449a
+姓名：韩昀初
+发布时间:2019-11-20 18:08:32
+最后回复：孙甲松
+回复时间：2019-11-21 22:46:46
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic有关数组作为函数参数
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+韩昀初
+
+
+
+
+#include<stdio.h> #pragma warning(disable:4996) int Findmin(int c[5]) { int i=0,m;   for(m=0;m<5;m++)   { if(c[i]>c[m])     c[i]=c[m];   }   return(c[m]); } main() { int x,y,i,j,m,n,s,a[5][5],b[5],c[5];   for(i=0;i<5;i++)   for(j=0;j<5;j++)   scanf("%d",&a[i][j]);   for(x=0;x<5;x++)   {    { for(y=0;y<5;y++)     b[y]=a[x][y];    }     c[x]=Findmin(b[y]);   }   for(m=0;m<5;m++)   for(n=0;n<5;n++)   { printf("%d ",a[m][n]);     printf("%d\n",c[m]);   } }
+1>------ 已启动生成: 项目: ConsoleApplication36, 配置: Debug Win32 ------ 1>  源.c 1>c:\users\\documents\visual studio 2012\projects\consoleapplication36\consoleapplication36\源.c(22): warning C4047: “函数”:“int *”与“int”的间接级别不同 1>c:\users\\documents\visual studio 2012\projects\consoleapplication36\consoleapplication36\源.c(22): warning C4024: “Findmin”: 形参和实参 1 的类型不同 ========== 生成: 成功 1 个，失败 0 个，最新 0 个，跳过 0 个 ==========  
+老师，“int”类型的实参与“int*”类型的形参不兼容是什么意思？  
+
+
+
+Reply
+
+Starter： 2019-11-20 18:08
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">是指这一行有错：&nbsp;&nbsp;&nbsp; c[x]=Findmin(b[y]);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">你的b是一维数组，b[y]是一个数组元素，调用函数时应该写为：c[x]=Findmin(b);</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-11-21 22:46
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   35
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

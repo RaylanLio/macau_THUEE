@@ -1,0 +1,246 @@
+课程：计算机程序设计基础（2）
+内容：第六次作业疑问
+学号：89bf517cfe95c5f6e5fb3d835cfab519
+姓名：杨晗
+发布时间:2020-04-13 12:53:10
+最后回复：孙甲松
+回复时间：2020-04-13 21:26:58
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic第六次作业疑问
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+杨晗
+
+
+
+
+#include<iostream> #include<cstring> #pragma warning(disable:4996) using namespace std; class String { public:String(const char* a="\0") { this->str = new char[strlen(a) + 1]; strcpy(str, a); }       String(const String& str2) { this->str = new char[strlen(str2.str) + 1]; strcpy(this->str, str2.str); }       ~String() {};       void Set(const char*a) { delete[]str; this->str = new char[strlen(a)+1]; strcpy(str, a);}       void Print() { cout << str; }       String& operator =(String& str2) { char* q = new char[strlen(str2.str) + 1]; strcpy(q, str2.str); delete[]this->str; this->str = q; return *this;}       String operator+(String& p2)       {           char* ss;           ss = new char[strlen(str) + strlen(p2.str) + 1];           ss = strcpy(ss, str);           ss = strcat(ss, p2.str);           String t(ss);           delete[]ss;           return t;       } private:char* str; };
+为什么这个程序不能过编译？
+ int main() {
+    String s1("abcd"), s2("efghij"), s3("lmnop"), s4, s5;     s4 = s1 + s2 + s3; s4.Print();     s5 = s5 + s3 + s4; s5.Print();     return 0; }
+为什么这个程序不能过编译？
+会出现E0349类错误：“没有与这些操作匹配的“=”运算符”
+
+
+
+Reply
+
+Starter： 2020-04-13 12:53
+
+
+
+
+
+
+
+
+
+廖汶鋒
+
+
+
+
+
+
+ 
+ 
+  <p>String&amp; operator =(<span style="background-color:#f1c40f">const </span>String&amp; str2) {&nbsp;<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; char* q = new char[strlen(str2.str) + 1];&nbsp;<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; strcpy(q, str2.str);&nbsp;<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; delete[]this-&gt;str;&nbsp;<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; this-&gt;str = q;&nbsp;<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return *this;&nbsp;<br> &nbsp; &nbsp; &nbsp; }</p> 
+  <p>形参的类型要换一下</p> 
+ 
+
+
+
+
+Del
+Reply(0)
+Collapse
+
+1#：2020-04-13 21:03
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>把=和+操作符成员函数的形参改为常引用方式：</p> 
+  <p>&nbsp; &nbsp; String&amp; operator =(<span style="color:#e74c3c">const</span> String&amp; str2)<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;String operator+(<span style="color:#e74c3c">const</span> String&amp; p2)</p> 
+  <p>再试一下。在VS2008上编译未出问题。<br> &nbsp;</p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+2#：2020-04-13 21:26
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		2
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   65
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

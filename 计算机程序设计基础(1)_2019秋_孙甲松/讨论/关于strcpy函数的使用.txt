@@ -1,0 +1,202 @@
+课程：计算机程序设计基础（1）
+内容：关于strcpy函数的使用
+学号：81c759644d8e9f384a7747ca12b6013c
+姓名：朱宏怀
+发布时间:2019-11-29 21:55:40
+最后回复：朱宏怀
+回复时间：2019-12-03 16:20:23
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic关于strcpy函数的使用
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+朱宏怀
+
+
+
+
+作业第13题
+#include<stdio.h>
+#include<string.h>
+#pragma warning (disable:4996) void sort(int n, char** p) {     int m, k, i, j;     char q[10]="\0";     k = 0;     m = n - 1;     while (k < m)     {         j = m - 1;         m = 0;         for (i = k; i <= j; i++)             if (strcmp(p[i], p[i + 1]) > 0)             {                 strcpy(q,p[i]);                 strcpy(p[i],p[i+1]);                 strcpy(p[i+1],q);                 m = i;             }         j = k + 1;         k = 0;         for (i = m; i >= j; i--)             if (strcmp(p[i - 1], p[i]) > 0)             {                 strcpy(q, p[i-1]);                 strcpy(p[i-1], p[i]);                 strcpy(p[i], q);             }     } }
+请问一下，在冒泡排序时，能否使用strcpy函数来起到交换p[i]与p[i+1]的作用？
+这是什么错误？
+
+
+
+ 
+  
+
+ 
+
+
+
+Reply
+
+Starter： 2019-11-29 21:55
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p><span style="font-size:10.5pt">在冒泡排序时，使用</span><span style="font-size:10.5pt">strcpy</span><span style="font-size:10.5pt">函数来交换</span><span style="font-size:10.5pt">p[i]</span><span style="font-size:10.5pt">与</span><span style="font-size:10.5pt">p[i+1]</span><span style="font-size:10.5pt">字符串没有问题，但是你主程序中的</span><span style="font-size:10.5pt">p</span><span style="font-size:10.5pt">应该是字符指针数组</span><span style="font-size:10.5pt">char *p[]</span><span style="font-size:10.5pt">，指针所指的字符串是常量，只能读不能改写，所以出错。</span></p> 
+  <p><span style="font-size:10.5pt">所以在这个冒泡排序里，只能交换</span><span style="font-size:10.5pt">p[i]</span><span style="font-size:10.5pt">与</span><span style="font-size:10.5pt">p[i+1]</span><span style="font-size:10.5pt">指向字符串的指针值，而不能交换字符串。</span></p> 
+ 
+
+
+
+
+Reply(1)
+Collapse
+
+1#：2019-12-02 17:30
+
+
+
+
+
+
+
+
+朱宏怀： 
+ 
+ 
+  明白了，谢谢老师！
+ 
+
+
+
+
+
+2019-12-03 16:20
+Reply
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		2
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   36
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

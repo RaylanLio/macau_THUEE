@@ -1,0 +1,387 @@
+课程：计算机程序设计基础（2）
+内容：析构函数和复制构造函数
+学号：c9d7cf6ba57f955a031395e732028306
+姓名：王潇然
+发布时间:2020-03-30 18:20:51
+最后回复：孙甲松
+回复时间：2020-03-31 11:14:36
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic析构函数和复制构造函数
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+王潇然
+
+
+
+
+编写程序如下：
+#include<iostream>
+using namespace std;
+class Rectangle;
+class Point
+{friend Rectangle;
+public:
+    Point(double x1, double y1);
+    Point(Point& p);
+    ~Point();
+    void Set(double x2, double y2);
+    void Print();
+    double x;
+    double y;
+};
+ 
+class Rectangle
+{
+public:
+    Point pright;
+    Point pleft;
+    Rectangle(Point p1, Point p2);
+    Rectangle(Rectangle& r);
+    ~Rectangle();
+    void Set2(Point p3,Point p4);
+    void Print();
+    void Area();
+};
+ 
+Point::Point(double x1, double y1) :x (x1), y (y1){};
+ 
+ 
+Point::Point(Point& p) :x(p.x), y(p.y) {};
+ 
+Point::~Point()
+{
+    cout << "Point Destructor called！" << endl;
+}
+ 
+void Point::Set(double x2, double y2)
+{
+    x = x2;
+    y = y2;
+}
+ 
+void Point::Print()
+{
+    cout << "the point is:(" << x << "," << y << ")" << endl;
+}
+/*Rectangle::Rectangle(Point p1, Point p2)
+{
+    pright=Point(p1.x,p1.y);
+    pleft = Point(p2.x,p2.y);
+}*/
+ 
+Rectangle::Rectangle(Point p1, Point p2) :pright(p1), pleft(p2) {};
+Rectangle::Rectangle(Rectangle& r) :pright(r.pright), pleft(r.pleft)
+{
+    cout << "Rectangle copyconstructor called!" << endl;
+}
+/*{
+    pright=Point(r.pright.x,r.pright.y);
+    pleft = Point(r.pleft.x, r.pleft.y);
+    pright = r.pright;
+    pleft = r.pleft;
+    cout << "Rectangle copyconstructor called！" << endl;
+}
+*/ 
+Rectangle::~Rectangle()
+{
+    cout << "Rectangle Destructor called!" << endl;
+}
+ 
+void Rectangle::Set2(Point p3, Point p4) 
+{
+    pright = p3;
+    pleft = p4;
+}
+ 
+void Rectangle::Area()
+{
+    double s;
+    s = (pright.x - pleft.x) * (pright.y - pleft.y);
+    cout << "the area is:" << s << endl;
+}
+ 
+void Rectangle::Print()
+{
+    cout << "the two points:(" << pright.x << "," << pright.y << "),(" << pleft.x <<
+         "," << pleft.y << ")" << endl;
+}
+ 
+int main()
+{
+    Point p0(0, 0), p1(1,1),p2(-1, -1), p3(2, 1), p4(-2, -1);
+    Rectangle r1(p1, p2);
+    Rectangle r2(p3, p4);
+    p0.Print();
+    p0.Set(0, 1);
+    Point p5(p0);
+    cout << "copy p5:" << endl;
+    p5.Print();
+    r1.Print();
+    r1.Area();
+    Rectangle r3(r1);
+    cout << "copy r3:" << endl;
+    r3.Print();
+    r3.Area();
+    r1.Set2(p3,p4);
+    r1.Print();
+    r1.Area();
+}
+ 
+请问为什么注释标出的部分的复制构造函数都报错呢，这种复制构造方式是否错误？另外，程序输出结果如下：
+Point Destructor called！
+Point Destructor called！
+Point Destructor called！
+Point Destructor called！
+the point is:(0,0)
+copy p5:
+the point is:(0,1)
+the two points:(1,1),(-1,-1)
+the area is:4
+Rectangle copyconstructor called!
+copy r3:
+the two points:(1,1),(-1,-1)
+the area is:4
+Point Destructor called！
+Point Destructor called！
+the two points:(2,1),(-2,-1)
+the area is:8
+Rectangle Destructor called!
+Point Destructor called！
+Point Destructor called！
+Point Destructor called！
+Rectangle Destructor called!
+Point Destructor called！
+Point Destructor called！
+Rectangle Destructor called!
+Point Destructor called！
+Point Destructor called！
+Point Destructor called！
+Point Destructor called！
+Point Destructor called！
+Point Destructor called！
+Point Destructor called！
+请问为什么程序刚开始就调用了4次析构函数？
+
+
+
+Reply
+
+Starter： 2020-03-30 18:20
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">如果把Rectangle的构造函数改为：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Rectangle::Rectangle(Point p1, Point p2)</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">{</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; pright=Point(p1.x,p1.y);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; pleft = Point(p2.x,p2.y);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">}</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">会产生编译错误：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">error C2512: “Point”: 没有合适的默认构造函数可用</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">因为Rectangle构造函数执行时，会先调用缺省值的Point构造函数构造内嵌对象pright, pleft，但你的Point构造函数没有缺省值，所以产生编译错误。把Point类中的构造函数说明改为：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; Point(double x1=0, double y1=0);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">就可以解决这个问题。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">你的程序只打印Point析构信息，不打印Point构造和复制构造信息，就会造成一种错觉，程序刚开始就调用了4次析构函数，你把Point构造函数和复制构造函数中都加入打印信息：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point::Point(double x1, double y1) :x (x1), y (y1){cout &lt;&lt; "Point Constructor called！" &lt;&lt; endl; }</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point::Point(Point&amp; p) :x(p.x), y(p.y) {cout &lt;&lt; "Point Copy Constructor called！" &lt;&lt; endl; }</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point::~Point() {&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Point Destructor called！" &lt;&lt; endl; }</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">运行结果是：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Constructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Constructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Constructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Constructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Constructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Copy Constructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Copy Constructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Copy Constructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Copy Constructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt"><span style="color:red">Point Destructor called</span><span style="color:red">！</span></span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt"><span style="color:red">Point Destructor called</span><span style="color:red">！</span></span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Copy Constructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Copy Constructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Copy Constructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Copy Constructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt"><span style="color:red">Point Destructor called</span><span style="color:red">！</span></span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt"><span style="color:red">Point Destructor called</span><span style="color:red">！</span></span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">the point is:(0,0)</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Copy Constructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">copy p5:</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">the point is:(0,1)</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">the two points:(1,1),(-1,-1)</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">the area is:4</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Copy Constructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Copy Constructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Rectangle copyconstructor called!</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">copy r3:</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">the two points:(1,1),(-1,-1)</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">the area is:4</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Copy Constructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Copy Constructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Destructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Destructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">the two points:(2,1),(-2,-1)</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">the area is:8</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Rectangle Destructor called!</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Destructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Destructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Destructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Rectangle Destructor called!</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Destructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Destructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Rectangle Destructor called!</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Destructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Destructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Destructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Destructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Destructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Destructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Point Destructor called！</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">请按任意键继续. . .</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify">&nbsp;</p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">可以看出，你所说的了4次Point析构函数其实是构造下面两个Rectangle对象：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; Rectangle r1(p1, p2);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; Rectangle r2(p3, p4);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Rectangle::Rectangle(Point p1, Point p2)构造函数执行完毕，析构形参p1和p2。</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2020-03-31 11:14
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   40
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

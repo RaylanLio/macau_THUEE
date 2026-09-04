@@ -1,0 +1,177 @@
+课程：计算机程序设计基础（1）
+内容：利用动态内存输入任意字符串时释放内存问题
+学号：3b1cbfed31422cde4a28252e866b449a
+姓名：韩昀初
+发布时间:2019-12-01 22:35:34
+最后回复：孙甲松
+回复时间：2019-12-02 19:36:02
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic利用动态内存输入任意字符串时释放内存问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+韩昀初
+
+
+
+
+#include<stdio.h> #include<stdlib.h> #pragma warning(disable:4996)  main() {     printf("请输入一个字符串：");     int k = 1;     int j;     char u;     char* p;     p = (char*)malloc(sizeof(char) * 1);     do{         scanf("%c", &u);         *(p+k-1) = u;         k++;         p = (char*)realloc(p,sizeof(char)*k);     } while (u != '\n');     *(p + k - 1) = '\0';     for (j = 0; j < k - 1; j++)         printf("%c", *(p + j)); }
+老师好，这个程序我想实现在未知字符串长度的情况下任意输入一个字符串，都能输出该字符串，但没有释放内存。
+#include<stdio.h> #include<stdlib.h> #pragma warning(disable:4996)  main() {     printf("请输入一个字符串：");     int k = 1;     int j,m;     char u;     char* p;     p = (char*)malloc(sizeof(char) * 1);     do{         scanf("%c", &u);         *(p+k-1) = u;         k++;         p = (char*)realloc(p,sizeof(char)*k);         if(p==NULL)         {             printf("realloc fail\n");             exit(-1);         }     } while (u != '\n');     *(p + k - 1) = '\0';     for (j = 0; j < k - 1; j++)         printf("%c", *(p + j));     for (m = k; m > 0; m--)         free(p);     p = NULL; }
+但这样编译时警告使用未初始化的内存p，请问应该如何释放内存？
+
+
+
+Reply
+
+Starter： 2019-12-01 22:35
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">第一个程序最后加入&nbsp;&nbsp;&nbsp;&nbsp; free(p); 就完美了。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">第二个程序， p就一个指针指向一块动态内存，为什么用：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">for (m = k; m &gt; 0; m--)</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; free(p);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">循环多次释放？一个free(p);就足够了。</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-12-02 19:36
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   23
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,114 @@
+课程：电子电路与系统基础（1）
+内容：【常见误区】电路中节点重复命名; 及查看电学量名的补充.
+学号：9e68b55ae34b5d79758f6f38fe4b7482
+姓名：李瑄
+发布时间:2020-03-09 22:55:12
+最后回复：李瑄
+回复时间：2020-03-09 22:55:12
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic【常见误区】电路中节点重复命名; 及查看电学量名的补充.
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+李瑄
+
+
+
+
+SPICE电路拓扑中， 同一个节点无法有两个名字（冲突则只会取其一）。
+GND的节点是作为0电位参考的，不能被命其它名。
+-----------------
+（如果想命名2个，可串联0V电压源分离成拓扑上2个节点：这样就是两个节点，只不过电位完全相同。也不额外改变支路电流。在电路行为上不会有改变。）
+ 
+============SPICE中电学量的名字==============
+电压量是对节点定义的 (电势，即节点相对于 GND组成的端口 的电压)；
+电流量是对端口定义的；在 SPICE里往往也将一个元件的各个接口与 GND构成端口来命名电流.
+-------------------------
+在 LTspice中，仿真后，可将鼠标放置在 节点上，在软件状态栏(软件窗口左下角) 查看电压量名称 V(<node>)，或 将鼠标放在 元件上 查看电流量名称 像I(<port>);
+仿真后，在 Waveform Viewer画图窗口中，可 右键>Add Traces 查看此次仿真输出的所有原始电学量的名字。（以及扫描自变量，如对 .tran仿真为 time, 对 .ac仿真为 frequency, 对 .step扫描控制命令还会加入被扫描的参量名…）（存于 .raw波形输出文件里）
+所有绘图表达式（由手动编辑或快捷键自动生成）均基于这些SPICE仿真器找到的原始电学量的名字。
+
+
+
+Reply
+
+Starter： 2020-03-09 22:55
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		0
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   83
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

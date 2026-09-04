@@ -1,0 +1,210 @@
+课程：计算机程序设计基础（1）
+内容：【已解决】黑色星期五的换年问题
+学号：a6d3ad0298894ae2f736846f7cb07a17
+姓名：杜首良
+发布时间:2019-11-05 09:14:35
+最后回复：孙甲松
+回复时间：2019-11-05 11:50:00
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic【已解决】黑色星期五的换年问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+杜首良
+
+
+
+
+我昨天晚上太困了，这问题也删不了了，大家当个笑话看看吧。。。
+ 
+ 
+黑色星期五问题中，我将1年到2019年的黑色星期五月份依次输出，但正序输出会出现13月(第二年的1月)，倒序输出会出现0月(前一年的12月)，该如何避免这个问题？
+#include <stdio.h>
+int main()
+{
+    int yy,mm,dd=6,n=0,max=2,maxyear=2019,min=2,minyear=2019;
+    for(yy=1;yy<=2019;yy++)
+    {
+         printf("%-4d年的",yy);
+         for(mm=1;mm<=12;mm++)
+         {
+                 switch (mm)
+                      {case 1:;case 3:; case 5:;case 7:;case 8:;case 10:;case 12:dd+=31;break;
+                       case 4:;case 6:;case 9:; case 11:dd+=30;break;
+                       case 2:{if (yy%4!=0)
+                                   dd+=28;
+                               else if (yy%100==0)
+                                   if (yy%400==0)
+                                       dd+=29;
+                                   else dd+=28;
+                               else dd+=29;
+                              }
+                      }
+                 dd=dd%7;
+                 if(dd==5)
+                 {
+                      printf("%d月 ",mm+1);
+                      n++;
+                 }
+         }
+         printf("有黑色星期五\n");
+         if(n>max)
+             max=n,maxyear=yy;
+         if(n<min)
+             min=n,minyear=yy;
+         n=0;
+    }
+    printf("一年中最多有%d个黑色星期五，例如%d年\n一年中最少有%d个黑色星期五，例如%d年\n",max,maxyear,min,minyear);
+}
+
+
+
+Reply
+
+Starter： 2019-11-05 09:14
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  要判断12月13日是不是黑色星期五，只要把前11个月的天数加起来，再加上13即可，不应该有case 12。
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-11-05 11:50
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   256
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,174 @@
+课程：计算机程序设计基础（2）
+内容：关于释放内存
+学号：356cb20a3c935fe2cf4332d09eb8cc4f
+姓名：任少睿
+发布时间:2020-05-09 10:00:41
+最后回复：孙甲松
+回复时间：2020-05-09 19:20:22
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic关于释放内存
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+任少睿
+
+
+
+
+请问这个程序最后对于q**，q*[h]的释放写的是正确的吗？谢谢！
+#include<iostream> #include<fstream> #include<iomanip> #include<cstdlib> #include<cstring> using namespace std; void main() {     char a[81];     char e=-1;     int n,j=-1,p=2,s=-1;     cout<<"请输入希望处理的字符串数目："<<endl;     cin>>n;     char**q=new char*[n];     for(int i=0;i<n;i=i+1)     {         q[i]=new char[81];     }     ifstream ttfile("D:\\data2.dat");     cout<<"成功打开"<<endl;     while(1)     {         j=j+1;         while(1)         {             s=s+1;             ttfile.get(q[j][s]);             if((q[j][s]=='\n')||s==80)             {                 q[j][s]='\0';                 s=-1;                 break;             }
+        }         cout<<ttfile.tellg()<<endl;         cout<<q[j]<<endl;         cout<<ttfile.tellg()<<endl;         cout<<ttfile.tellg()<<endl;         if(ttfile.eof())         {             cout<<"文件中不足n个字符串，只有"<<j<<"个"<<endl;             n=j;             break;         }         if(j==(n-1)) break;     }     cout<<"读入成功！"<<endl;     ttfile.close();     cout<<"成功关闭2"<<endl;     for(int k=0;k<n-1;k=k+1)         for(int y=k+1;y<=n-1;y=y+1)         {             if((strcmp(q[k],q[y])>0))             {                 strcpy(a,q[k]);                 strcpy(q[k],q[y]);                 strcpy(q[y],a);                     }         }     cout<<"成功排序"<<endl;     ofstream tfile("D:\\data3.dat");     cout<<"成功打开2"<<endl;     for(int y=0;y<n;y=y+1)     {         tfile<<q[y]<<endl;     }     cout<<"写入成功！"<<endl;     ttfile.close();     cout<<"成功关闭2"<<endl;     for(int h=0;h<n;h=h+1)     {         delete []q[h];     }     delete []q; }
+
+
+
+Reply
+
+Starter： 2020-05-09 10:00
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">char**q=new char*[n]; 那么q是指向指针的指针，q指向了n个指针单元的动态内存快。q[h]是指向81个char的动态内存块的指针， q[h]与*(q+h)的写等价，所以 delete []q[h];的写法正确，也可以写为： delete []*(q+h);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">但不能写为 delete []q*[h]; 这不能通过编译。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">delete []q; 是释放所指向的n个指针单元的动态内存快。</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2020-05-09 19:20
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   44
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

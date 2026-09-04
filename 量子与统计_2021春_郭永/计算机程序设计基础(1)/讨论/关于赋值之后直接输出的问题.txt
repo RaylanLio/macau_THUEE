@@ -1,0 +1,198 @@
+课程：计算机程序设计基础（1）
+内容：关于赋值之后直接输出的问题
+学号：9c3ecd7584aa9e0b596646a261fc977f
+姓名：张庚瀚
+发布时间:2019-11-24 23:27:10
+最后回复：孙甲松
+回复时间：2019-11-26 20:29:14
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic关于赋值之后直接输出的问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+张庚瀚
+
+
+
+
+main() {     double **p;     int i,j,k,m,n;     scanf("%d",&m);     p=(double **)malloc(sizeof(double*)*m);          scanf("%d",&n);     for(i=0;i<m;i++)         p[i]=(double *)malloc(sizeof(double)*n);     for(i=0;i<m;i++)         {for(j=0;j<n;j++)                 p[i][j]=1.0;     printf("%3.0f ",p[i][j]);             printf("\n");              }     for(i=0;i<m;i++)         {for(j=0;j<n;j++)                      printf("%3.0f ",p[i][j]);             printf("\n");         }
+    for(i=m-1;i>=0;i--)         free (p[i]);     free (p);     system("pause");
+}
+输入2_3
+输出-0
+       -0
+          1     1     1
+          1     1     1
+为什么呢
+ 
+
+
+
+Reply
+
+Starter： 2019-11-24 23:27
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">如果你想在原来的赋值循环中， </span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp; for(i=0;i&lt;m;i++)</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp; {&nbsp;&nbsp;&nbsp;&nbsp; for(j=0;j&lt;n;j++)</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p[i][j]=1.0;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp; }</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">赋值之后直接输出，不能简单插入打印语句：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; for(i=0;i&lt;m;i++)</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {for(j=0;j&lt;n;j++)</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p[i][j]=1.0;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; printf("%3.0f ",p[i][j]);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("\n");</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">否则，printf("%3.0f ",p[i][j]);是等for(j=0;j&lt;n;j++)结束再打印，肯定错误。需要加一个{ }将赋值和打印语句构成一个复合语句：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; for(i=0;i&lt;m;i++)</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; {&nbsp;&nbsp;&nbsp; for(j=0;j&lt;n;j++)</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;{&nbsp; p[i][j]=1.0;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("%3.0f ",p[i][j]);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("\n");</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; }</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-11-26 20:29
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   31
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

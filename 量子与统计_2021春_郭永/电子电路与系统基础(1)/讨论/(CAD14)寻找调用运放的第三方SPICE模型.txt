@@ -1,0 +1,136 @@
+课程：电子电路与系统基础（1）
+内容：(CAD14)寻找|调用运放的第三方SPICE模型
+学号：9e68b55ae34b5d79758f6f38fe4b7482
+姓名：李瑄
+发布时间:2020-05-26 17:57:36
+最后回复：李瑄
+回复时间：2020-05-26 17:57:36
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic(CAD14)寻找|调用运放的第三方SPICE模型
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+李瑄
+
+
+
+
+以想用 TI公司生产的 uA741时为例：
+
+下载 TI官网的 UA741 SPICE model文件；解压模型文件 UA741.301 至当前仿真路径下；
+在电路图中贴入 .lib UA741.301 的 SPICE命令来调入 UA741.301的模型文本文件；
+`F2`调用 opamp2 的 symbol，Value填写 UA741；即可仿真调入的UA741模型；
+
+
+或者搜索网络上共享的 uA741 SPICE model，如: https://forum.allaboutcircuits.com/threads/how-to-add-op-amp-741-to-lt-spice.139069 
+
+ 
+或采用把 子电路 封装成电路模块 供上层调用的方法：如 educational例程 里边有 LM741.asc的运放内部电路，可修改（指定外部端口;去掉端口外的激励源、测试用负载）后 封装为一个 .subckt来使用（方法见附件）
+ 
+-----------
+对于大多数不要求性能的运放实验，用 LTspice自带库里的 ADI提供的 OP07等通用运放 替代uA741此运放做原理验证时，电路现象上 差别不会太大。（而当关心运放的高阶指标，如 增益、带宽、带负载的驱动能力、输入失调 时，才必须找更准确对应的模型）
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+4_LTspice层次化调用电路库生成.pdf578.41K Down
+
+
+
+
+
+
+
+
+Reply
+
+Starter： 2020-05-26 17:57
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		0
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   146
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

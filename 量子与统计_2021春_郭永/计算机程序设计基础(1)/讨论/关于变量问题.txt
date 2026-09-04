@@ -1,0 +1,184 @@
+课程：计算机程序设计基础（1）
+内容：关于变量问题
+学号：86bcf96ff5f6c73ce3c0f1102189ff41
+姓名：张瑞泽
+发布时间:2019-11-20 18:13:03
+最后回复：孙甲松
+回复时间：2019-11-21 22:55:41
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic关于变量问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+张瑞泽
+
+
+
+
+（1）#include <stdio.h> 
+main( )  {extern int x,y; /*x与y定义为外部变量*/  void swap( ); scanf("%d%d",&x,&y);  swap( );  printf("x=%d,y=%d\n",x,y); }  void swap( )  {int x,y; int t; t=x; x=y; y=t; return; }
+ 
+int x,y放里面为什么会显示warning C4700: 使用了未初始化的局部变量？
+ 
+（2）#include <stdio.h> 
+main( )  {int x,y; /*x与y定义为外部变量*/  void swap( ); scanf("%d%d",&x,&y);  swap( );  printf("x=%d,y=%d\n",x,y); }  extern int x,y; void swap( )  { int t; t=x; x=y; y=t; return; }
+这样用extern为什么也不可以？
+
+
+
+Reply
+
+Starter： 2019-11-20 18:13
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">（1）把int x,y; 放在函数void swap( ) 内定义，那么x和y就变成void swap( )的未赋初值的局部变量，</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">void swap( ) </span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">{ int x,y;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp; int t; t=x; x=y; y=t;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp; return;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">}</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">这样t=x; x=y;当然会显示warning C4700: 使用了未初始化的局部变量。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">（2）你把int x,y;&nbsp; 放在main函数中定义，那么x和y就变成main中的局部变量。后面的extern int x,y; 是想引用外部变量x和y，可是找不到，所以不正确。</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-11-21 22:55
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   27
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

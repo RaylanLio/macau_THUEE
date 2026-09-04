@@ -1,0 +1,427 @@
+课程：计算机程序设计基础（2）
+内容：析构函数调用问题
+学号：c9d7cf6ba57f955a031395e732028306
+姓名：王潇然
+发布时间:2020-05-04 21:23:15
+最后回复：孙甲松
+回复时间：2020-05-05 15:40:07
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic析构函数调用问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+王潇然
+
+
+
+
+程序编写如下：
+#include<iostream>
+ 
+using namespace std;
+ 
+template<class T>
+class Queue {
+public:
+    T *buff;
+ 
+    explicit Queue(int m1) {
+        Max = m1;
+        now = 0;
+        buff = new T[Max];
+        cout << "Queue constructor called!" << endl;
+    }
+ 
+    Queue(const Queue &q1) {
+        Max = q1.Max;
+        now = q1.now;
+        buff = new T[Max];
+        cout << "Queue copy constructor called!" << endl;
+    }
+ 
+    ~Queue() {
+        delete[] buff;
+        cout << "Queue destructor called!" << endl;
+    }
+ 
+    void In(const T &t1) {
+        if (now >= Max) {
+            cout << "the queue is full!" << endl;
+        } else {
+            buff[++now] = t1;
+            // Tail = &buff[now];
+        }
+    }
+ 
+    void Out(int n) {
+        if (now == 0)
+            cout << "the queue is empty,can't out!" << endl;
+        else {
+            T temp;
+            int i;
+            for (i = n; i < Max; i++) {
+                buff[i - 1] = buff[i];
+            }
+        }
+    }
+ 
+    bool Empty() {
+        if (now == 0) {
+            cout << "the queue is empty!" << endl;
+            return true;
+        } else {
+            cout << "the queue isn't empty!" << endl;
+            return false;
+        }
+    }
+ 
+private:
+    int Max;
+    int now;
+};
+ 
+int main() {
+    Queue<int> q1(5);
+    int a1 = 1, a2 = 2, a3 = 3, a4 = 4, a5 = 5;
+    q1.Empty();
+    q1.In(a1);
+    q1.In(a2);
+    q1.In(a3);
+    q1.In(a4);
+    q1.Empty();
+    q1.In(a5);
+q1.Empty();
+ 
+    q1.Out(4);
+    q1.Out(3);
+    q1.Out(2);
+    q1.Out(1);
+    q1.Out(0);
+    return 0;
+}
+ 
+输出结果如下：
+Queue constructor called!
+the queue is empty!
+the queue isn't empty!
+the queue isn't empty!
+#include<iostream>
+ 
+using namespace std;
+ 
+template<class T>
+class Queue {
+public:
+    T *buff;
+ 
+    explicit Queue(int m1) {
+        Max = m1;
+        now = 0;
+        buff = new T[Max];
+        cout << "Queue constructor called!" << endl;
+    }
+ 
+    Queue(const Queue &q1) {
+        Max = q1.Max;
+        now = q1.now;
+        buff = new T[Max];
+        cout << "Queue copy constructor called!" << endl;
+    }
+ 
+    ~Queue() {
+        delete[] buff;
+        cout << "Queue destructor called!" << endl;
+    }
+ 
+    void In(const T &t1) {
+        if (now >= Max) {
+            cout << "the queue is full!" << endl;
+        } else {
+            buff[++now] = t1;
+            // Tail = &buff[now];
+        }
+    }
+ 
+    void Out(int n) {
+        if (now == 0)
+            cout << "the queue is empty,can't out!" << endl;
+        else {
+            T temp;
+            int i;
+            for (i = n; i < Max; i++) {
+                buff[i - 1] = buff[i];
+            }
+        }
+    }
+ 
+    bool Empty() {
+        if (now == 0) {
+            cout << "the queue is empty!" << endl;
+            return true;
+        } else {
+            cout << "the queue isn't empty!" << endl;
+            return false;
+        }
+    }
+ 
+private:
+    int Max;
+    int now;
+};
+ 
+int main() {
+    Queue<int> q1(5);
+    int a1 = 1, a2 = 2, a3 = 3, a4 = 4, a5 = 5;
+    q1.Empty();
+    q1.In(a1);
+    q1.In(a2);
+    q1.In(a3);
+    q1.In(a4);
+    q1.Empty();
+    q1.In(a5);
+q1.Empty();
+ 
+    q1.Out(4);
+    q1.Out(3);
+    q1.Out(2);
+    q1.Out(1);
+    q1.Out(0);
+    return 0;
+}
+ 
+输出结果如下：
+Queue constructor called!
+the queue is empty!
+the queue isn't empty!
+the queue isn't empty!
+程序运行时没有报错，但输出以上四行后就自动退出了，好像没有执行Queue的析构函数，请问为什么呢？
+
+
+
+Reply
+
+Starter： 2020-05-04 21:23
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>编译结果：</p> 
+  <p>test.cpp(35) : warning C4101: “temp”: 未引用的局部变量</p> 
+  <p>1&gt; &nbsp;test.cpp(31): 编译类 模板 成员函数“void Queue&lt;T&gt;::Out(int)”时</p> 
+  <p>1&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; with</p> 
+  <p>1&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [</p> 
+  <p>1&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; T=int</p> 
+  <p>1&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ]</p> 
+  <p>1&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; test.cpp(56): 参见对正在编译的类 模板 实例化“Queue&lt;T&gt;”的引用</p> 
+  <p>1&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; with</p> 
+  <p>1&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [</p> 
+  <p>1&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; T=int</p> 
+  <p>1&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ]</p> 
+  <p>运行结果：</p> 
+  <p>Queue constructor called!</p> 
+  <p>the queue is empty!</p> 
+  <p>the queue isn't empty!</p> 
+  <p>the queue isn't empty!</p> 
+  <p>就不动了。</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; 如果把析构函数中的语句&nbsp; delete[] buff;&nbsp; 删除，运行结果为：</p> 
+  <p>Queue constructor called!</p> 
+  <p>the queue is empty!</p> 
+  <p>the queue isn't empty!</p> 
+  <p>the queue isn't empty!</p> 
+  <p>Queue destructor called!</p> 
+  <p>请按任意键继续. . .</p> 
+  <p>&nbsp;</p> 
+  <p>就可以正常结束了，说明无法正常释放buff所指的动态内存，发生过动态内存越界操作。你的Empty函数通过判断now == 0是否成立决定队列是否空，而你的Out函数：</p> 
+  <p>&nbsp;&nbsp;&nbsp; void Out(int n) {</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (now == 0)</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "the queue is empty,can't out!" &lt;&lt; endl;</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else {</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; T temp;</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int i;</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (i = n; i &lt; Max; i++) {</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; buff[i - 1] = buff[i];</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p> 
+  <p>}</p> 
+  <p>Out函数不返回任何值，函数还有一个形参n，指定第几个元素出队？这还是队列操作吗？出队的元素哪里去了？不打印不返回，这样的出队操作有什么意义？出队没改变now的值，Empty函数还怎么判断队列是否为空？</p> 
+  <p>每次出队的元素应该是队列头buff[0] 由temp暂存，最后作为Out函数的值返回。每次出队，队列元素应前移一位，now减一：</p> 
+  <p>&nbsp;&nbsp;&nbsp; T Out( ) {</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (now == 0)</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;&nbsp;&nbsp; cout &lt;&lt; "the queue is empty,can't out!" &lt;&lt; endl;</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return buff[0]; // 返回一个无效值，为了不产生编译警告错误</p> 
+  <p>&nbsp; &nbsp; &nbsp; &nbsp; }</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else {</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; T temp=&nbsp;<strong>buff[0];</strong></p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int i;</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (i = 1; i &lt; now; i++) {</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; buff[i - 1] = buff[i];</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; now--;</p> 
+  <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return temp;</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p> 
+  <p>}</p> 
+  <p>入队函数In的语句：</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; buff [++now] = t1;</p> 
+  <p>应改为：</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; buff[now++] = t1;</p> 
+  <p>主函数中的&nbsp;</p> 
+  <p>&nbsp; &nbsp; q1.Out(4);</p> 
+  <p>&nbsp;&nbsp;&nbsp; q1.Out(3);</p> 
+  <p>&nbsp;&nbsp;&nbsp; q1.Out(2);</p> 
+  <p>&nbsp;&nbsp;&nbsp; q1.Out(1);</p> 
+  <p>&nbsp; &nbsp; q1.Out(0);</p> 
+  <p>应改为：</p> 
+  <p>&nbsp;&nbsp;&nbsp; cout &lt;&lt; q1.Out() &lt;&lt; endl;</p> 
+  <p>&nbsp;&nbsp;&nbsp; cout &lt;&lt; q1.Out() &lt;&lt; endl;</p> 
+  <p>&nbsp;&nbsp;&nbsp; cout &lt;&lt; q1.Out() &lt;&lt; endl;</p> 
+  <p>&nbsp;&nbsp;&nbsp; cout &lt;&lt; q1.Out() &lt;&lt; endl;</p> 
+  <p>&nbsp; &nbsp; cout &lt;&lt; q1.Out() &lt;&lt; endl;</p> 
+  <p>或</p> 
+  <p>&nbsp; while(!q1.Empty())</p> 
+  <p>&nbsp; &nbsp; &nbsp; &nbsp; cout &lt;&lt; q1.Out() &lt;&lt; endl;</p> 
+  <p>Empty函数不必打印任何信息，改为：</p> 
+  <p>&nbsp;&nbsp;&nbsp; bool Empty() {</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return (now == 0);</p> 
+  <p>}</p> 
+  <p>即可。</p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2020-05-05 15:40
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   43
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

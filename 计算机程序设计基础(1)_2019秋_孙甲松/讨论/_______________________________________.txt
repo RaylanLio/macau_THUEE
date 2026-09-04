@@ -1,0 +1,247 @@
+课程：计算机程序设计基础（1）
+内容：成功但是有警告是怎么回事？
+学号：356cb20a3c935fe2cf4332d09eb8cc4f
+姓名：任少睿
+发布时间:2019-09-27 16:45:20
+最后回复：孙甲松
+回复时间：2019-09-27 18:39:12
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic成功但是有警告是怎么回事？
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+任少睿
+
+
+
+
+源代码：
+#include<stdio.h> #include<math.h> main() {     double a,b,c,q,w,e,s,p;                                   /*定义变量*/     printf("输入a，b，c\n");     scanf("%lf%lf%lf",&a,&b,&c);                             /*输入三边长*/     q=a+b;     w=b+c;     e=a+c;                                                    /*检验是否可以构成三角形*/     if(q<=c||w<=a||e<=b)     {         printf("输入数据有错误，无法构成三角形\n");           /*输出错误信息*/     }     else     {         p=(a+b+c)/2;         s=sqrt(p*(p-a)*(p-b)*(p-c));         printf("面积为%lf\n",s);                                 /*输出面积*/     }
+}
+ 
+警告信息：
+1>------ 已启动全部重新生成: 项目: test2, 配置: Debug Win32 ------ 1>正在删除项目“test2”(配置“Debug|Win32”)的中间文件和输出文件 1>正在编译... 1>test2.c 1>c:\users\rsr\desktop\程设作业\test2\test2\test2.c(7) : warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. 1>        e:\能用的vs\vc\include\stdio.h(306) : 参见“scanf”的声明 1>正在编译资源清单... 1>Microsoft (R) Windows (R) Resource Compiler Version 6.0.5724.0 1>Copyright (C) Microsoft Corporation.  All rights reserved. 1>正在链接... 1>LINK : 没有找到 C:\Users\rsr\Desktop\程设作业\test2\Debug\test2.exe 或上一个增量链接没有生成它；正在执行完全链接 1>正在嵌入清单... 1>Microsoft (R) Windows (R) Resource Compiler Version 6.0.5724.0 1>Copyright (C) Microsoft Corporation.  All rights reserved. 1>生成日志保存在“file://c:\Users\rsr\Desktop\程设作业\test2\test2\Debug\BuildLog.htm” 1>test2 - 0 个错误，1 个警告 ========== 全部重新生成: 成功 1 个，失败 0 个，跳过 0 个 ==========
+为什么最后出现一个警告？
+谢谢
+ 
+
+
+
+Reply
+
+Starter： 2019-09-27 16:45
+
+
+
+
+
+
+
+
+
+李文懿
+
+
+
+
+
+
+ 
+ 
+  部分vs在编译时认为传统C库的scanf不安全，可在程序最上面加上以下这行代码，就不会提示有警告了。 #pragma warning(disable:4996)
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-09-27 18:32
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>这是微软故意捣乱，这类警告可以不理，或者在程序开头加上：</p> 
+  <p>#pragma&nbsp; warning(disable:4996)</p> 
+  <p>将这类4996警告关闭，编译时不再提示。</p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+2#：2019-09-27 18:39
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		2
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   67
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

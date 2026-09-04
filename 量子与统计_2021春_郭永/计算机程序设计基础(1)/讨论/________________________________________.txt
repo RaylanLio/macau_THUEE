@@ -1,0 +1,190 @@
+课程：计算机程序设计基础（1）
+内容： 关于源文件添加现有项的问题
+学号：6a99096f7e7d0a3b3ff4ac50d13fa20e
+姓名：李金熹
+发布时间:2019-11-03 00:27:33
+最后回复：孙甲松
+回复时间：2019-11-04 19:10:20
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic 关于源文件添加现有项的问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+李金熹
+
+
+
+
+老师，我在源文件中添加了一个现有项，但生成的时候不含主函数的文件似乎没有参与生成，这是为什么呢？
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+练习8-4 哥德巴赫猜想(1000以内).rar312.91K Down
+
+
+
+
+
+
+
+
+Reply
+
+Starter： 2019-11-03 00:27
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>我在你的项目中只找到了一个源文件：源.c （内容如下）, 没看到其它源文件，你所说的源文件中添加了一个现有项，应该是没添加成功。</p> 
+  <p>#include&lt;stdio.h&gt;<br> main()<br> { int n, i, m, k, j = 0;<br> &nbsp; int prime(int);<br> &nbsp; for ( n = 6; n &lt;= 1000; n += 2)<br> &nbsp;&nbsp; &nbsp; { m = n - 1;<br> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; do { i = prime( m );<br> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; k = prime( n - m );<br> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;m -= 2;<br> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } while( (i != 0 || k != 0) &amp;&amp; m &gt; 1) ;<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if ( m &lt;= 1 ) { printf("Fail!\n"); j = 1;}<br> &nbsp;&nbsp;&nbsp;&nbsp; }<br> &nbsp; if ( j == 0) printf("Carry on!\n");<br> }</p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-11-04 19:10
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   56
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

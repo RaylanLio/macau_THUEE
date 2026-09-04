@@ -1,0 +1,194 @@
+课程：计算机程序设计基础（1）
+内容：練習8 7
+学号：8dca1b4615305db49396e54b0878343c
+姓名：廖俊宇
+发布时间:2019-11-14 18:03:24
+最后回复：孙甲松
+回复时间：2019-11-14 19:12:14
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic練習8 7
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+廖俊宇
+
+
+
+
+寫著寫著
+#include<stdio.h>
+int Ack(int n, int x, int y) {  if (n==0) return x+1;    else if (y==0)    { switch(n)      case 1:  return x; break;      case 2:  return 0; break;      case 3:  return 1; break;      default: return 2; break;    }    else return Ack(n-1, Ack(n,x,y-1), x);
+在case和break兩處分別出現了：
+Error: case標簽只能在開關内使用
+Error: break語句只能在循環或標簽内使用
+這是怎麽回事？
+
+
+
+Reply
+
+Starter： 2019-11-14 18:03
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>&nbsp;</p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">VS2008上编译结果：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">test.c(6) : error C2043: 非法 break</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">test.c(7) : error C2046: 非法的 case</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">test.c(7) : error C2043: 非法 break</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">test.c(8) : error C2046: 非法的 case</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">test.c(8) : error C2043: 非法 break</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">test.c(9) : error C2047: 非法的 default</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">test.c(9) : error C2043: 非法 break</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify">&nbsp;</p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">因为switch(n)是多路选择语句，后面所有的case和default语句必须用{ &nbsp;}括起来。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">否则在编译器看来，除了第一个case语句，其余所有case和break都是非法的，都不属于这个switch语句。应改为：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">switch(n)</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp; {&nbsp; case 1:&nbsp; return x; break;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp; case 2:&nbsp; return 0; break;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp; case 3:&nbsp; return 1; break;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp; default: return 2; break;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">}</span></p> 
+  <p>&nbsp;</p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-11-14 19:12
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   46
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

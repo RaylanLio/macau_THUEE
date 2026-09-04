@@ -1,0 +1,199 @@
+课程：计算机程序设计基础（1）
+内容：仍然是关于字符串常量的两个小问题
+学号：20dcd6f30d5e6683905f3729738ecdfa
+姓名：刘雪枫
+发布时间:2019-12-07 14:38:27
+最后回复：孙甲松
+回复时间：2019-12-09 18:23:59
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic仍然是关于字符串常量的两个小问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+刘雪枫
+
+
+
+
+之前说，字符串常量都存储于常量区内，不会消亡，那么：
+第一个问题：
+int main()
+{
+      char c[] = "goodbye, World!"      //语句1
+      "hello, World";    //语句2
+      return 0;
+}
+如果写了语句2，这是一个毫无意义的语句，那么系统会不会也给它在常量区分配一个内存空间？如果是这样，那么在执行语句1的时候，在栈里面字符数组c的空间里存着"goodbye, World",在常量区是不是也存着一份一模一样的"goodbye, World" ?
+第二个问题：
+字符串常量分配内存空间是在什么时候？是在程序开始执行就分配了吗，还是执行到这个语句才分配？
+
+
+
+Reply
+
+Starter： 2019-12-07 14:38
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">第一个问题</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">如果这样写语句2，系统会不会也给它在常量区分配一个内存空间不好说，得看编译系统的优化能力，但很可能会给它在常量区分配一个内存空间。应该改为：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; char c[] = "goodbye, World!";&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;//语句1</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; char *p= "goodbye,World!";&nbsp;&nbsp;&nbsp; //语句2</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; printf("%s %s\n",c,p);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; strcpy(c,"Hello,World!");</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; printf("%s %s\n",c,p);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">运行结果是：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">goodbye, World! goodbye,World!</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Hello,World! goodbye,World!</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">请按任意键继续. . .</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify">&nbsp;</p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">你会发现，修改了栈里面的数组c，不影响p所指的字符串，因此一开始在栈里面字符数组c的空间里和在常量区各存着一份一模一样的"goodbye, World!" 字符串。 但是如果：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; char *p= "goodbye,World!";&nbsp;&nbsp;&nbsp; //语句2</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; char *q= "goodbye,World!";&nbsp;&nbsp;&nbsp; //语句3</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("%p\n%p\n",p,q);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">p和q指针各指向一模一样的字符串，打印结果会告诉你， p和q的指针值完全相同，说明只在常量区存了一个"goodbye,World!"字符串。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify">&nbsp;</p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">第二个问题</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">字符串常量分配内存空间是在程序开始执行就分配了。字符串常量已经在可执行文件.exe中，一加载执行可执行文件.exe就同时为字符串常量分配了内存空间。</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-12-09 18:23
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   33
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

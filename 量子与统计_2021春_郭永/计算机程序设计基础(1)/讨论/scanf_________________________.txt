@@ -1,0 +1,176 @@
+课程：计算机程序设计基础（1）
+内容：scanf 跳过某个输入数据
+学号：9ea9a0e90ef5b7b81023ef4915cb5c4e
+姓名：曾令安
+发布时间:2019-10-11 23:19:54
+最后回复：孙甲松
+回复时间：2019-10-12 17:05:20
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topicscanf 跳过某个输入数据
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+曾令安
+
+
+
+
+在%和格式字符之间加入*号，用于跳过对应的输入数据。
+例如：int x,y,z;
+          scanf("%d  %*d  %d  %d",&x, &y, &z);
+          printf("%d  %d  %d",x ,y ,z);
+若输入： 12 34 56 78
+输出是： 12 56 78
+ 请问%*d 在实际程序应用上有什么功能吗，既然只要三个数字为什么不直接将scanf里改成%d %d %d？
+
+
+
+Reply
+
+Starter： 2019-10-11 23:19
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  在实际工作中，有可能别人给你的数据文件中就是这种格式，你不想要每行的第二个数据，就可以跳过去。
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-10-12 17:05
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   41
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

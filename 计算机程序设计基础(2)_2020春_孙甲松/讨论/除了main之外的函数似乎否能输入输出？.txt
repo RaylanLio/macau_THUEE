@@ -1,0 +1,171 @@
+课程：计算机程序设计基础（2）
+内容：除了main之外的函数似乎否能输入输出？
+学号：356cb20a3c935fe2cf4332d09eb8cc4f
+姓名：任少睿
+发布时间:2020-09-04 20:54:43
+最后回复：孙甲松
+回复时间：2020-09-04 22:35:28
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic除了main之外的函数似乎否能输入输出？
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+任少睿
+
+
+
+
+老师好！
+一般函数总是按照参数传递，输入都是在main里面进行，请问能够main里面调用一个void函数，比如viod f（），但函数f内有cin这类句子，然后直接输入吗?谢谢！
+
+
+
+Reply
+
+Starter： 2020-09-04 20:54
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  可以呀，void函数一般被称为 过程函数，就是完成某件事，不需要返回值，而这类过程函数一般多是用来进行输入输出。
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2020-09-04 22:35
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   37
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

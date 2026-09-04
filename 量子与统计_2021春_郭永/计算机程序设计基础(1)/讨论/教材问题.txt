@@ -1,0 +1,178 @@
+课程：计算机程序设计基础（1）
+内容：教材问题
+学号：9ea9a0e90ef5b7b81023ef4915cb5c4e
+姓名：曾令安
+发布时间:2019-12-15 22:06:15
+最后回复：孙甲松
+回复时间：2019-12-16 21:21:07
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic教材问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+曾令安
+
+
+
+
+老师，请问书上第317页的第12题的具体要求（2）是不是打错了。。struct student *data 是不是应该改为struct student data？
+
+
+
+ 
+  
+
+ 
+
+
+
+Reply
+
+Starter： 2019-12-15 22:06
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>2) 划分成的三个子表均采用链表结构，链表中各结点的数据域存放学生情况在原登记表中的序号（即结构体数组元素的下标），而不是直接存放学生的成绩情况。</p> 
+  <p>没问题，教材上说清楚了，链表中各结点的数据域存放学生情况在原登记表中的序号（即结构体数组元素的下标），而不是直接存放学生的成绩情况。</p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-12-16 21:21
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   32
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,106 @@
+课程：电子信息科学与技术导引(1)
+内容：第四讲第三节课后思考题
+学号：07b5dd4dfc81bd826e16b6b1d3d6f82f
+姓名：刘才煜
+发布时间:2020-02-27 13:31:47
+最后回复：刘才煜
+回复时间：2020-02-27 13:31:47
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic第四讲第三节课后思考题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+刘才煜
+
+
+
+
+用最好的编码方式来存储10^7个8位电话号码
+ 
+不懂加不会
+ 
+
+
+
+Reply
+
+Starter： 2020-02-27 13:31
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		0
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   139
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,185 @@
+课程：计算机程序设计基础（2）
+内容：操作符函数形参不使用引用方式出现错误
+学号：a6d3ad0298894ae2f736846f7cb07a17
+姓名：杜首良
+发布时间:2020-04-06 23:56:47
+最后回复：孙甲松
+回复时间：2020-04-07 12:01:54
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic操作符函数形参不使用引用方式出现错误
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+杜首良
+
+
+
+
+#include<iostream> #pragma warning(disable:4996) using namespace std;
+class String { public:     String(const char* s)     {         int length = strlen(s);         this->s = new char[length + 1];         strcpy(this->s, s);         cout << "构造函数" << endl;     }     String(String& S)     {         char* p;         int length = strlen(S.s);         p = new char[length + 1];         strcpy(p, S.s);         delete[]this->s;         this->s = new char[length + 1];         strcpy(this->s, p);         delete[]p;         cout << "复制构造函数" << endl;
+    }     ~String()     {         cout << "析构函数" << endl;     }     friend bool operator <(String S1, String S2);
+private:     char* s; };
+bool operator <(String S1, String S2) {     if (strcmp(S1.s, S2.s) < 0)         return 1;     else return 0; }
+void main() {     String s1("abcd"), s2("abce");     if (s1 < s2)    cout << "s1<s2!\n"; }  
+会在s1<s2时的复制构造函数的delete []this->s报错0xC0000005: 读取位置 0x586010DB 时发生访问冲突。
+如果把操作符函数改为常引用，则不会出现此问题
+这是什么原因呢？
+
+
+
+Reply
+
+Starter： 2020-04-06 23:56
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>操作符函数形参不使用引用方式，传递参数就需要调用复制构造函数，而你的复制构造函数：&nbsp;&nbsp; &nbsp;</p> 
+  <p>String(String&amp; S)<br> &nbsp; &nbsp; &nbsp; &nbsp;{<br> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;char* p;<br> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;int length = strlen(S.s);<br> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;p = new char[length + 1];<br> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;strcpy(p, S.s);<br> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<strong> &nbsp;delete[]this-&gt;s;</strong><br> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;this-&gt;s = new char[length + 1];<br> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;strcpy(this-&gt;s, p);<br> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;delete[]p;<br> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;cout &lt;&lt; "复制构造函数" &lt;&lt; endl;</p> 
+  <p>&nbsp;&nbsp; &nbsp;}</p> 
+  <p>中<strong>delete[]this-&gt;s;是</strong>多余的，新构造的对象的q还未申请动态内存，怎么就开始释放。这导致了致命错误。</p> 
+  <p>其实复制构造函数可以简化为：</p> 
+  <p>String(String&amp; S)<br> &nbsp; &nbsp; &nbsp; &nbsp;{<br> &nbsp; &nbsp; &nbsp; &nbsp; this-&gt;s = new char[strlen(S.s)&nbsp;+ 1];<br> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;strcpy(this-&gt;s, S.s);<br> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;cout &lt;&lt; "复制构造函数" &lt;&lt; endl;</p> 
+  <p>}</p> 
+  <p>&nbsp;</p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2020-04-07 12:01
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   44
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

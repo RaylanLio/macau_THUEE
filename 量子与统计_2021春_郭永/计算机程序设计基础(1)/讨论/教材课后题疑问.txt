@@ -1,0 +1,177 @@
+课程：计算机程序设计基础（1）
+内容：教材课后题疑问
+学号：3b1cbfed31422cde4a28252e866b449a
+姓名：韩昀初
+发布时间:2019-12-16 14:54:04
+最后回复：孙甲松
+回复时间：2019-12-16 19:33:09
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic教材课后题疑问
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+韩昀初
+
+
+
+
+第11章第12题，题目要求打印出学生在原表中的序号（元素下标），但是结构体类型定义为
+struct stunode
+{
+  struct student* data;
+  struct student* next;
+};
+那么该怎么打印出元素下标呢？
+ 
+
+
+
+Reply
+
+Starter： 2019-12-16 14:54
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  弄一个计数器，边打印边计数吧。
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-12-16 19:33
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   39
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+题目: Week 6
+发布人: 贾宇宽
+发布时间: 2022-03-28 23:59
+
+内容: This week we investigate the optimal receiver for baseband transmission.
+The average power of white gaussian noise, by the integral of PSD, is infinity before filtering. To restrict the amplitude of noise, a low-pass filter is applied first. Then to maximize the SNR and achieve maximal channel capacity, the matched filter is introduced, according to Cauchy-Schwarz inequality, and the process is similar to correlation.
+Square root raised cosine filter is the combination of the Nyquist criterion and the matched filter. The transmitter and the matched receiver together perform under an end-to-end Nyquist criterion.
+Signal-to-Noise Ratio is a vague concept. The SNR before the matched filter is no larger than that after the matched filter, with equality when the symbol rate is 2W, when the waveform and matched filter are exactly low-pass filters.
+Please refer to Haykin - Communication System 5.9-5.10, 8.2
+ 
+Reminder: Problem Set 3 is released. The time for Experiment 1 has been arranged. 

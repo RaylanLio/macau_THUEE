@@ -1,0 +1,188 @@
+课程：计算机程序设计基础（1）
+内容：请问课本191页第6题为什么会出现这样的结果？
+学号：d951c68cc5b67fe584ff9f7291493911
+姓名：王月蓉
+发布时间:2019-11-10 17:23:22
+最后回复：孙甲松
+回复时间：2019-11-11 12:32:40
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic请问课本191页第6题为什么会出现这样的结果？
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+王月蓉
+
+
+
+
+#include<stdio.h> #include<math.h> #pragma warning(disable:4996) main() {     int n,F(int n);     printf("请输入n");     scanf("%d", &n);     printf("%d", F(n)); } int F(int n) {     if (n > 2)     {         return F(n - 1) + F(n - 2);     }     else if (n == 1 && n == 2)         return 1; }
+第一次执行：
+请输入n1
+16826372
+ 
+第二次执行
+请输入n
+2        16826372
+ 
+第三次执行
+请输入n       5       84131860
+
+
+
+Reply
+
+Starter： 2019-11-10 17:23
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">VS2008上编译结果为：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">test.c(19) : warning C4715: “F”: 不是所有的控件路径都返回值</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">因为你的程序当 if (n == 1 &amp;&amp; n == 2) 不成立时，没有返回值。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">运行结果是：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">请输入n1</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">-858993460请按任意键继续. . .</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify">&nbsp;</p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">n为1时结果为随机数，也就是没有返回值。因为if (n == 1 &amp;&amp; n == 2) 中n任何时候都不可能既等于1又等于2。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">应改为：if (n == 1 || n == 2)</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-11-11 12:32
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   53
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

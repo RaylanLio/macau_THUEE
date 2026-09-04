@@ -1,0 +1,173 @@
+课程：计算机程序设计基础（1）
+内容：一个结构体问题
+学号：3c6f8dbc41d8c17344c122a3a1063527
+姓名：罗铮
+发布时间:2019-12-19 16:24:41
+最后回复：孙甲松
+回复时间：2019-12-19 18:06:41
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic一个结构体问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+罗铮
+
+
+
+
+输入第一个学生的5门成绩之后什么都没发生，也没有输入第二个学生的信息的提示。
+#include<stdio.h> #include<stdlib.h> #include<string.h> #pragma warning(disable:4996) struct stu {  int num;  char a[100];  int grade[6]; }; void scanff(struct stu *a[], int n) {  int k;  for (k = 0; k < n; k++)  {   printf("请输入第%d个学生的信息\n", k + 1);   scanf("%d", &(a[k]->num));   while (getchar() != '\0');   scanf("%s", a[k]->a);   scanf("%d %d %d %d %d", &(a[k]->grade[0]), &(a[k]->grade[1]), &(a[k]->grade[2]), &(a[k]->grade[3]), &(a[k]->grade[4]));   a[k]->grade[5] = 0;  } } void sum(struct stu *a[], int n) {  int k, i;  for (k = 0; k < n; k++)  {   for (i = 0; i < 5; i++)    a[k]->grade[5] += a[k]->grade[i];  } } void sort(struct stu *a[], int n) {  int i, k, m; struct stu h;  for (i = 0; i < n - 1; i++)  {   m = i;   for (k = m + 1; k < n; k++)   {    if (a[m]->grade[5] < a[k]->grade[5])     m = k;   }   if (m != i) {    h = *a[m]; *a[m] = *a[i]; *a[i] = h;   }  } } void search(struct stu *a[], int n,int k) {  int i;  for (i = 0; i < n; i++)   if (a[i]->num == k)    /*printf("%d  %s  %d  %d  %d  %d  %d", a[k]->num, a[k]->a, a[k]->grade[0], a[k]->grade[1], a[k]->grade[2], a[k]->grade[3], a[k]->grade[4], a[k]->grade[5]);*/    printf("%d%s", a[k]->num, a[k]->a);printf("%d%d%d%d%d", (a[k]->grade[0]), (a[k]->grade[1]), (a[k]->grade[2]), (a[k]->grade[3]), (a[k]->grade[4])); } main() {  int n, k;  printf("请输入总学生数目：\n");  scanf("%d", &n);  struct stu* a;  a = (struct stu*)malloc(sizeof(struct stu)*n);  scanff(&a, n);  sum(&a, n);  sort(&a, n);  printf("请输入需要查找的学号：\n");  scanf("%d", &k);  search(&a, n, k); }
+
+
+
+Reply
+
+Starter： 2019-12-19 16:24
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>&nbsp;while (getchar() != '\0');</p> 
+  <p>应改为：</p> 
+  <p>&nbsp;while (getchar() != '\n');</p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-12-19 18:06
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   33
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,147 @@
+课程：电子电路与系统基础（1）
+内容：LTspice下NMOS模型调用提示
+学号：9e68b55ae34b5d79758f6f38fe4b7482
+姓名：李瑄
+发布时间:2020-03-09 22:24:22
+最后回复：李瑄
+回复时间：2020-03-09 22:24:22
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+TopicLTspice下NMOS模型调用提示
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+李瑄
+
+
+
+
+NMOS的调用实例：NMOS采用元件库中的 nmos4 (自定义NMOS)的 symbol; 
+
+推荐采用 .lib cmosedu_models.txt(见附件)中 N_1u的仿真模型; 右键设置 NMOS实例的参数 Model Name=N_1u, L=10u (长沟道) W=80u; 
+
+ 
+
+ 
+  
+ 
+
+同时需要把 cmosedu_models.txt 放在当前仿真文件.asc的同一文件夹下。
+注意: cmosedu_models.txt里的 MOS管耐压为 5V, 不建议电源供电超过耐压。
+
+
+也可自定义低阶 NMOS model：.MODEL NMOS NMOS VT0=0.8 KP=11e-5：
+
+ 
+
+ 
+  
+==============
+关于 MOS .model自定义的拓展资料（在电电第9节内容中讲解这些参量）：
+
+ 
+   
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+cmosedu_models.txt11.29K Down
+
+
+
+
+
+
+
+
+Reply
+
+Starter： 2020-03-09 22:24
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		0
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   96
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

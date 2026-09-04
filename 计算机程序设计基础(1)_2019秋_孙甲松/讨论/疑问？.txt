@@ -1,0 +1,235 @@
+课程：计算机程序设计基础（1）
+内容：疑问？
+学号：8be12a53801ab29375246203bb9487f6
+姓名：梁辰宇
+发布时间:2019-11-12 22:47:33
+最后回复：梁辰宇
+回复时间：2019-11-13 13:31:41
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic疑问？
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+梁辰宇
+
+
+
+
+图1.老师，这个“烫”字是怎么出来的？
+图2.为什么一个一个字符的输入是正确的但前面的输入却不行？
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+新建 DOC 文档 (2).doc129.50K Down
+
+
+
+
+
+
+
+
+Reply
+
+Starter： 2019-11-12 22:47
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">如果你在函数中定义了一个局部字符数组：char a[50], b[200];</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">如果不赋初值就把a数组和b数组当做字符串输出：puts(a); printf(“%s”,b);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">就会得到结果：烫烫烫烫烫烫烫烫烫烫烫烫</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">每个汉字是由两个字符组成，汉字“烫”的区位码是：0xcccc, 也就是说如果定义一个字符数组不赋初值，那么微软的VS编译系统给每一个字符元素的值都为0xcc（二进制：11001100）。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">某种情况下得到的字符数组不赋初值，会打印出：屯屯屯屯屯屯，下一章我们就会讲。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify">&nbsp;</p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">你的附件中没有看到图2。</span></p> 
+ 
+
+
+
+
+Reply(1)
+Collapse
+
+1#：2019-11-13 11:52
+
+
+
+
+
+
+
+
+梁辰宇： 
+ 
+ 
+  哦，好的，我把图二的补过来了
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+新建 DOC 文档 (2).doc217.50K Down
+
+
+
+
+
+
+
+
+
+2019-11-13 13:31
+Reply
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		2
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   51
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

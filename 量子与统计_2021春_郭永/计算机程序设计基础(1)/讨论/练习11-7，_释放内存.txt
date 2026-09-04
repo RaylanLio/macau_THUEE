@@ -1,0 +1,215 @@
+课程：计算机程序设计基础（1）
+内容：练习11-7， 释放内存
+学号：6a99096f7e7d0a3b3ff4ac50d13fa20e
+姓名：李金熹
+发布时间:2019-12-01 22:51:04
+最后回复：李金熹
+回复时间：2019-12-02 21:44:23
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic练习11-7， 释放内存
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+李金熹
+
+
+
+
+老师，这个程序运行时弹出了警告窗口，为什么呢？
+#include<stdio.h> #include<stdlib.h> #pragma warning (disable: 4996) #define SN struct node SN { int k;   SN * next; }; SN * make () { int n;   SN * head = NULL, *p, *q;   printf("Input a set of positive integers in order,and end with -1:\n");   scanf("%d", &n);   while( n != -1)   { p = ( SN * ) malloc(sizeof(SN));     if( head == NULL)         head = p;     else q -> next = p;     p -> k = n;     p -> next = NULL;     q = p;     scanf("%d", &n);   }   return head; } void reverse( SN ** head) { SN * p, *q, *r;   p = *head;   if( p == NULL) return ;   q = p ->next;   p -> next = NULL;   while( q != NULL)   { r = q -> next;     q -> next = p;     p = q; q = r;   }    * head = p;   return; } main() { SN * head, *q, *p, *ah =NULL, *bh =NULL, *ap, *bp, *aq, *bq;   head = make();   p = head;   while( p != NULL)   { if( p -> k % 2)     { ap = ( SN * ) malloc (sizeof(SN *));       if( ah == NULL)           ah = ap;       else aq -> next = ap;       ap -> k = p -> k;       ap -> next = NULL;       aq = ap;     }   else     { bp = ( SN * ) malloc (sizeof(SN *));       if( bh == NULL)           bh = bp;       else bq -> next = bp;       bp -> k = p -> k;       bp -> next = NULL;       bq = bp;     }   p = p -> next;   }   reverse(&ah);   reverse(&bh);   p = ah;   while ( p != NULL)   { printf("%-4d", p -> k);     q = p -> next;     free(p);     p = q;   }   printf("\n");   p = bh;   while ( p != NULL)   { printf("%-4d", p -> k);     q = p -> next;     free(p);     p = q;   }   printf("\n"); }  
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+2019-12-01 (4).png202.66K Down
+
+
+
+
+
+
+
+
+Reply
+
+Starter： 2019-12-01 22:51
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>你的主函数中ap和bp是结构体指针，应该申请一块SN大小的结构体，为什么写为申请SN *指针内存？</p> 
+  <p>ap = ( SN * ) malloc (sizeof(SN *));</p> 
+  <p>bp = ( SN * ) malloc (sizeof(SN *));</p> 
+  <p>应改为：</p> 
+  <p>ap = ( SN * ) malloc (sizeof(SN));</p> 
+  <p>bp = ( SN * ) malloc (sizeof(SN));</p> 
+  <p>&nbsp;</p> 
+ 
+
+
+
+
+Reply(1)
+Collapse
+
+1#：2019-12-02 19:48
+
+
+
+
+
+
+
+
+李金熹： 
+ 
+ 
+  明白了，谢谢
+ 
+
+
+
+
+
+2019-12-02 21:44
+Reply
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		2
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   35
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

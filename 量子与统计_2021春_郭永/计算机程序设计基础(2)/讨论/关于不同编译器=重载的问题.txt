@@ -1,0 +1,175 @@
+课程：计算机程序设计基础（2）
+内容：关于不同编译器=重载的问题
+学号：b74d1b16dcb5573b5439c310e252b4b9
+姓名：孙博然
+发布时间:2020-03-24 18:20:33
+最后回复：孙甲松
+回复时间：2020-03-25 15:13:47
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic关于不同编译器=重载的问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+孙博然
+
+
+
+
+class String{ public:     String(char *p){         str=new char[strlen(p)+1];         strcpy(str,p);     cout<<"constructor!"<<endl;     }     String(String &a);     ~String()     { cout<<"Destructor!"<<endl;}     String & operator =(String &s2); private:     char *str; };
+String::String(String &a){     str=new char[strlen(a.str)+1];     strcpy(str,a.str);     cout<<"copy constructor!"<<endl; }
+String & String::operator =(String &s2){    char *q=new char[strlen(s2.str)+1];     strcpy(q,s2.str);     if(strlen(str)!=strlen(s2.str))     {         delete[] str;         str = new char[strlen(s2.str)+1];     }     strcpy(str,q);     delete []q;     return *this; }
+老师请问为什么以上代码的String & String::operator =(String &s2)处，在xcode中会显示"no variable overloaded",而在vs中运行就没有问题？
+此外根据http://www.cplusplus.com/forum/general/153830/中的提示，改为 String & operator =(const String &s2);在xcode上就可以通过了。此网站上网友给出的解释为“临时对象不能绑定到非常量的引用上”，这个很不理解，为什么？
+
+
+
+Reply
+
+Starter： 2020-03-24 18:20
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>函数形参如果是引用方式，函数中不修改引用对象的内容，那么最好写成常引用方式。</p> 
+  <p>因为普通对象可以进行常引用，但反过来常对象或者临时对象不能作为一般对象被引用。</p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2020-03-25 15:13
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   62
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

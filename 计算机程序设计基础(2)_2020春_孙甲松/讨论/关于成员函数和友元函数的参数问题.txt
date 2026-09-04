@@ -1,0 +1,172 @@
+课程：计算机程序设计基础（2）
+内容：关于成员函数和友元函数的参数问题
+学号：356cb20a3c935fe2cf4332d09eb8cc4f
+姓名：任少睿
+发布时间:2020-03-10 15:14:18
+最后回复：孙甲松
+回复时间：2020-03-12 01:46:42
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic关于成员函数和友元函数的参数问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+任少睿
+
+
+
+
+课上讲把一个函数设置为class A的成员函数，比如ADD（A b）；这样就直接可以调用b里面的private内容了，但是这个函数又不是B的友元函数，同时在用a.ADD的时候b也不包含a.ADD这个函数，为什么就直接能够使用b的private数据了呢？
+换句话说，如果再定义另一个类class C，ADD（C c）又被声明为A类的成员函数，也可以在不将ADD声明为C的友元的情况下，直接用a.ADD访问c的private了吗？这样不会出问题吗？
+谢谢！
+
+
+
+Reply
+
+Starter： 2020-03-10 15:14
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p><span style="font-size:10.5pt">ADD(A b)</span><span style="font-size:10.5pt">作为类</span><span style="font-size:10.5pt">A</span><span style="font-size:10.5pt">的成员函数，可以直接访问类</span><span style="font-size:10.5pt">A</span><span style="font-size:10.5pt">所有同类对象的</span><span style="font-size:10.5pt">private</span><span style="font-size:10.5pt">成员或成员函数。所以</span><span style="font-size:10.5pt">a.ADD</span><span style="font-size:10.5pt">函数可以直接访问</span><span style="font-size:10.5pt">b</span><span style="font-size:10.5pt">对象的私有成员。</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2020-03-12 01:46
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   44
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

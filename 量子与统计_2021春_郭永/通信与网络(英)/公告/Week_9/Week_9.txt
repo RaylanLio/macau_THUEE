@@ -1,0 +1,8 @@
+题目: Week 9
+发布人: 贾宇宽
+发布时间: 2022-04-18 23:50
+
+内容: In the detection of the passband transmission, the equivalent model is similar to those of the baseband, except that the variance of the complex noise is n0 rather than n0/2 and the noise is a two-dimensional Gaussian random variable. In fact, for 1D passband modulation, the noise is exactly the same as the baseband, with noise variance n0/2 on one dimension. 
+Afterward, we derive the SEP-SNR relationships of MASK (1D), MPSK, and MQAM (2D). It is important to note that, no matter what exact level you assign to the constellation points, 'A' or 'A/2', in the next step you will link those 'A' to 'Es', which will eventually lead to the same result. Usually, we assign the levels so that '2A' is the distance between symbols so that inside the Q-function we have 'A/sigma'. This concludes the modulation part.
+ 
+Reminder: We have a midterm exam next Monday. Problem set 4 is due this Sunday.

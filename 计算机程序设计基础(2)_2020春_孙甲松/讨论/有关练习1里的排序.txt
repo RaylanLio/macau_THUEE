@@ -1,0 +1,246 @@
+课程：计算机程序设计基础（2）
+内容：有关练习1里的排序
+学号：d40e8f9075bd15334c7078761bd733be
+姓名：温迪雅
+发布时间:2020-02-23 11:14:49
+最后回复：温迪雅
+回复时间：2020-02-25 12:30:51
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic有关练习1里的排序
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+温迪雅
+
+
+
+
+老师好，请问一下我这个程序是冒泡排序写的有问题吗？排序是乱的qwq，谢谢老师！
+ 
+#include<stdio.h> #include<stdlib.h> #include<string.h>
+void bubsort(char p[][81],int n) { int i,j;  for(i=0;i<n;i++)   for(j=i+1;j<n;j++)   { if(strcmp(p[i],p[j])>0)    { char d[81];     strcpy(d,p[i]);strcpy(p[i],p[i+1]);strcpy(p[i+1],d);    }   } } main() { FILE *a,*b;  int n,i=0;  char (*p)[81];  void bubsort(char p[][81],int n);  p=(char(*)[81])malloc(sizeof(char)*1*81);  if(p==NULL)  { printf("Can't get memory!\n");   exit(1);  }  if((a=fopen("D:\\Desktop\\a.txt","r"))==NULL)  { printf("cannot open this file!\n");   exit(0);  }  if((b=fopen("b.txt","w"))==NULL)  { printf("cannot open this file!\n");   exit(0);  }  while(fgets(p[i],81,a)!=NULL)   { char *m;    m=strstr(p[i-1],"\n");    if(m!=NULL)     *m='\0';    i++;    p=(char(*)[81])realloc(p,sizeof(char)*(i+1)*81);    if(p==NULL)    { printf("realloc fail\n");     exit(-1);    }   }  n=i;  bubsort(p,n);  for(i=0;i<n;i++)   fprintf(b,"%s\n",p[i]);  fclose(b);  fclose(a);  free(p);  printf("排序+拷贝已完成\n"); }
+
+
+
+Reply
+
+Starter： 2020-02-23 11:14
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>排序函数bubsort没有大问题，只是最好把 for(i=0;i&lt;n;i++)</p> 
+  <p>改为&nbsp;&nbsp;for(i=0;i&lt;n-1;i++)</p> 
+  <p>后面的</p> 
+  <p>while(fgets(p[i],81,a)!=NULL)<br> &nbsp; &nbsp; &nbsp; &nbsp;{&nbsp;char *m;<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;m=strstr(<strong>p[i-1]</strong>,"\n");</p> 
+  <p>是怎么回事？为什么读入的字符串放在p[i]中，用strstr函数到p[i-1]里去找回车符？</p> 
+  <p>这样i值为0时会数组越界引起致命错误或结果混乱。</p> 
+  <p>&nbsp;</p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2020-02-23 23:01
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+温迪雅
+
+
+
+
+
+
+ 
+ 
+  好的谢谢老师！我应该把m=strstr(p[i-1],"\n");之后的i++;提到前面来（捂脸）
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+2#：2020-02-25 12:30
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		2
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   109
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

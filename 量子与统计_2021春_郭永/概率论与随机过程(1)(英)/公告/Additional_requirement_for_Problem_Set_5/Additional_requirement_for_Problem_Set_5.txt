@@ -1,0 +1,6 @@
+题目: Additional requirement for Problem Set 5
+发布人: 张冉颢
+发布时间: 2021-03-24 18:31
+
+内容: For 2/(c)&(d) in Problem Set 5, please present a screenshot of your program as well as the result of the approximation. Or you can just pack your program with your handwriting together and upload the zip file.
+By the way, there is no restriction on the programming language you use.

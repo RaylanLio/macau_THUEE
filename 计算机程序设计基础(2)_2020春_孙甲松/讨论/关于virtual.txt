@@ -1,0 +1,173 @@
+课程：计算机程序设计基础（2）
+内容：关于virtual
+学号：356cb20a3c935fe2cf4332d09eb8cc4f
+姓名：任少睿
+发布时间:2020-09-05 10:50:12
+最后回复：孙甲松
+回复时间：2020-09-08 17:08:38
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic关于virtual
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+任少睿
+
+
+
+
+老师好！
+请问声明纯虚函数的时候，比如 virtual int A（）=0；
+继承这一抽象类的类中必须包含A（）这个函数吗？可不可以不包含它？即继承的类中必须有 int A（）{；；}吗？
+谢谢！
+
+
+
+Reply
+
+Starter： 2020-09-05 10:50
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>继承这一抽象类的类中可以不包含A（）这个函数，这个类中所用的A函数就是抽象类的纯虚函数A。</p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2020-09-08 17:08
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   28
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

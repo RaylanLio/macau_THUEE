@@ -1,0 +1,182 @@
+课程：计算机程序设计基础（1）
+内容：什么时候*t要赋初值啊
+学号：9c3ecd7584aa9e0b596646a261fc977f
+姓名：张庚瀚
+发布时间:2019-11-20 23:40:06
+最后回复：孙甲松
+回复时间：2019-11-21 23:15:43
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic什么时候*t要赋初值啊
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+张庚瀚
+
+
+
+
+书上的代码
+void swap(int **a.int **b)
+{
+int *t;
+t=*a,*a=*b,*b=*t;
+}
+我的想法//可以实现a,b的内容交换吗
+void swap(int **a.int **b)
+{
+int **t;
+t=a,a=b,b=t;
+}
+
+
+
+Reply
+
+Starter： 2019-11-20 23:40
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">t=a, a=b, b=t;只会交换指针a和b的值，不能实现a,b的内容交换。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">t=*a,*a=*b,*b=*t; 是交换a和b所指单元的内容值。</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-11-21 23:15
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   31
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

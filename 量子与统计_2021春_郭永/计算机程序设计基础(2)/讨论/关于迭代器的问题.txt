@@ -1,0 +1,192 @@
+课程：计算机程序设计基础（2）
+内容：关于迭代器的问题
+学号：9c3ecd7584aa9e0b596646a261fc977f
+姓名：张庚瀚
+发布时间:2020-05-02 15:49:23
+最后回复：张庚瀚
+回复时间：2020-05-03 17:39:19
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic关于迭代器的问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+张庚瀚
+
+
+
+
+ /*老师您好，想请问一下为什么不能用cout<<*itr.size()<<endl;，对iterator解引用返回的是什么呢？*/
+#include<iostream> #include<cstdlib> #include<string> #include<vector> #include<iterator> using namespace std;
+int main(void) {   
+vector<string> vi;     string ss;     while(cin>>ss)     {         vi.push_back(ss);//用空格隔开，ctrl-z结束输入     }     for(vector<string>::iterator itr=vi.begin();itr!=vi.end();++itr)     {                  string temp;         temp=*itr;         cout<<temp.size()<<endl;         /*为什么不能用cout<<*itr.size()<<endl;*/     }     return 0;     }
+
+
+
+Reply
+
+Starter： 2020-05-02 15:49
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>应写为： &nbsp;(*itr).size() 或 &nbsp;itr-&gt;size()<br> 运算符.的优先级高于运算符*</p> 
+ 
+
+
+
+
+Reply(1)
+Collapse
+
+1#：2020-05-03 01:24
+
+
+
+
+
+
+
+
+张庚瀚： 
+ 
+ 
+  好的，谢谢老师 
+ 
+
+
+
+
+
+2020-05-03 17:39
+Reply
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		2
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   45
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

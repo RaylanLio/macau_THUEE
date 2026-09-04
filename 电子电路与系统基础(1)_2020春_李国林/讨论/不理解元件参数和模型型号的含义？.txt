@@ -1,0 +1,105 @@
+课程：电子电路与系统基础（1）
+内容：不理解元件参数和模型型号的含义？
+学号：9e68b55ae34b5d79758f6f38fe4b7482
+姓名：李瑄
+发布时间:2020-02-19 17:51:45
+最后回复：李瑄
+回复时间：2020-02-19 17:51:45
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic不理解元件参数和模型型号的含义？
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+李瑄
+
+
+
+
+每个有源元件（如 Diode, BJT, MOSFET等）有许多不同的型号，对应的 model不同、性能有差异；同学们将在课程后续的涉及到的内容中，由理想模型、而后可能逐步细化认识其特性。
+对电电（原理性课程）初期 学会用理想元件的 model按需配置即可，也是对电路抽象的思维方法的训练。
+实验课才必须关注到实际实验所用的型号细节、训练简化分析高阶效应的工程素养。
+
+
+
+Reply
+
+Starter： 2020-02-19 17:51
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		0
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   90
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

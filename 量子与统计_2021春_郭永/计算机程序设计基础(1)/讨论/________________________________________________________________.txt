@@ -1,0 +1,243 @@
+课程：计算机程序设计基础（1）
+内容： 为什么会出现这样的错误提示？应该如何解决？
+学号：d951c68cc5b67fe584ff9f7291493911
+姓名：王月蓉
+发布时间:2019-10-11 23:54:14
+最后回复：王月蓉
+回复时间：2019-10-13 14:37:01
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic 为什么会出现这样的错误提示？应该如何解决？
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+王月蓉
+
+
+
+
+错误    C1010    在查找预编译头时遇到意外的文件结尾。是否忘记了向源中添加“#include "pch.h"”?
+
+
+
+Reply
+
+Starter： 2019-10-11 23:54
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  为什么要向源程序中添加“#include "pch.h"? 这是要干什么？ 你把源程序发上来看一下是什么问题引起的。
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-10-12 17:07
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+王月蓉
+
+
+
+
+
+
+ 
+ 
+  <p>
+    
+   </p>
+  <div class="ckeditor-html5-img" style="text-align:center">
+   <img src="http://learn.tsinghua.edu.cn/b/wlxt/common/downloadFiles?wjid=2019011023_BBS_157094857866071678979aa-5e2c-4647-bc1f-3a183ec07bb2&amp;wlkcid=2019-2020-1139283205" width="500">&nbsp;
+  </div> 我按照网上的提示把这里改成“不使用预编译头”之后就ok了。不知道这个是什么意思
+  <p></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+2#：2019-10-13 14:37
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		2
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   74
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

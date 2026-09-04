@@ -1,0 +1,188 @@
+课程：计算机程序设计基础（2）
+内容：关于构造函数的栈清理的问题
+学号：20dcd6f30d5e6683905f3729738ecdfa
+姓名：刘雪枫
+发布时间:2020-04-15 16:56:27
+最后回复：孙甲松
+回复时间：2020-04-16 17:35:26
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic关于构造函数的栈清理的问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+刘雪枫
+
+
+
+
+写代码意外发现，，写一个类A和它的构造函数，采用__cdecl清理栈：
+class A
+{
+__cdecl A() {}
+};
+VS2019会给出警告：warning C4166: 构造函数/析构函数的非法调用约定
+但是程序还能正常运行
+如果改成 class A {  __stdcall A() {}  };，就不会产生任何警告，程序也是正常运行
+请问老师，这是为什么呢？构造函数的栈只能由它本身清理吗？
+
+
+
+Reply
+
+Starter： 2020-04-15 16:56
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">_stdcall采用自动清栈的方式，而_cdecl是手工清栈。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">自动清栈，是指由调用者来处理，被调用者不需要处理。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">手工清栈，是指调用者不会管被调用的函数使用的栈，需要由被调用者自己处理。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify">&nbsp;</p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify">构造函数应该是默认约定为__stdcall方式，也就是<span style="font-size:10.5pt">自动清栈方式。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">因为构造函数也包括复制构造函数，复制构造函数会在栈中（复制）构造一个</span>无名对象作为返回值，</p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify">这个无名对象在调用者这里可能生命周期很长，需要停留很长时间，比如字符串对象求和：</p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify">s4=s1+s2+s3;&nbsp;</p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify">s1+s2在栈中创建返回的无名对象1需要继续和s3求和，再在栈中创建一个无名对象2返回。</p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify">直到给s4赋值后，才会依次从栈中清理掉无名对象2和无名对象1。</p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify">因为有先后时序，这种情况下构造函数的栈只能<span style="font-size:10.5pt">由调用者来酌情处理，</span>也就是<span style="font-size:10.5pt">自动清栈方式。</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2020-04-16 17:35
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   58
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

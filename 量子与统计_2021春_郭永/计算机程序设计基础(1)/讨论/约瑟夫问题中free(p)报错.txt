@@ -1,0 +1,262 @@
+课程：计算机程序设计基础（1）
+内容：约瑟夫问题中free(p)报错
+学号：a6d3ad0298894ae2f736846f7cb07a17
+姓名：杜首良
+发布时间:2019-12-18 21:37:51
+最后回复：杜首良
+回复时间：2019-12-19 22:14:02
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic约瑟夫问题中free(p)报错
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+杜首良
+
+
+
+
+调试发现free(p)行报错：HEAP CORRUPTION DETECTED:after Normal block (#71) at 0x001244C8.
+CRT detected that the application wrote to memory after end of heap buffer
+删去两个free(p)后可正常运行
+#include <stdio.h> #include <stdlib.h> struct people {     int num;     struct people *next; }; int main() {     int i,j,k,m,n;     struct people *head=NULL,*p,*q=NULL;     printf("依次输入总人数，留下人数，出列号:\n");     scanf("%d%d%d",&m,&n,&k);     for(i=1;i<=m;i++)     {         p=(struct people*)malloc(sizeof(struct people*));         if(p==NULL)         {printf("Can't get memory!");         exit(1);}         p->num=i;p->next=NULL;         if(head==NULL)             head=p;         else q->next=p;         q=p;     }     q->next=head;p=head;     for(i=m;i>n;i--)     {         for(j=1;j<k;j++)             q=p,p=p->next;         if(head==p)             head=p->next;         q->next=p->next;         free(p);         p=q->next;     }     printf("留下的人是:\n");     for(i=0;i<n;i++)     {         printf("%-3d",head->num);         p=head;         head=p->next;         free(p);     } }  
+
+
+
+Reply
+
+Starter： 2019-12-18 21:37
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>约瑟夫问题是，m个人每人一个编号：1,2,3,…,m，排成一个圆圈，由第1个人开始报数，每报数到第n人则该人就出列，然后再由下一个重新报数，直到剩下最后1个人，并打印出其编号。<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 怎么会有： 依次输入总人数，留下人数，出列号:&nbsp; ？？？</p> 
+ 
+
+
+
+
+Reply(1)
+Collapse
+
+1#：2019-12-19 12:09
+
+
+
+
+
+
+
+
+杜首良： 
+ 
+ 
+  我是想推广一下，只要让留下的人数为1即退化为约瑟夫问题，谢谢老师！
+ 
+
+
+
+
+
+2019-12-19 22:14
+Reply
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>p=(struct people*)malloc(sizeof(struct people*));</p> 
+  <p>申请的是struct people结构体而不是struct people结构体指针，应改为：</p> 
+  <p>&nbsp;p=(struct people*)malloc(sizeof(struct people));</p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">否则会造成每个结点的动态内存越界，free(p)无法正常释放产生致命错误。</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+2#：2019-12-19 17:27
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		3
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   46
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

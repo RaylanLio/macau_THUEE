@@ -1,0 +1,287 @@
+课程：计算机程序设计基础（2）
+内容：关于 常成员的地址/常静态常量打印地址 的疑问
+学号：cf9f4532e2baf8c5e6b1632a8ab33b80
+姓名：杨希杰
+发布时间:2020-05-02 00:32:44
+最后回复：杨希杰
+回复时间：2020-05-04 18:26:23
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic关于 常成员的地址/常静态常量打印地址 的疑问
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+杨希杰
+
+
+
+
+关于 常成员的地址/常静态常量打印地址 的疑问
+代码和问题都在附件
+麻烦老师了
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+程序代码.html286.01K Down
+
+
+
+
+
+
+
+
+Reply
+
+Starter： 2020-05-02 00:32
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">在VS2008上编译结果：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">test.cpp(11): error C2864:“Student::kPi”:只有静态常量整型数据成员才可以在类中初始化</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">test.cpp(14): error C2758:“Student::kPi”:必须在构造函数基/成员初始值设定项列表中初始化</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">test.cpp(11): 参见“Student::kPi”的声明</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">第11行：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp; const float kPi = 3.14159;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">第14行：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp; Student(int age = 18) : age_(age) { kCount++; }</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">kPi是Student类中常量，但不是静态常量，每一个Student对象中都会有一个独立的kPi，因此必须在Student构造函数基/成员初始值设定项列表中初始化kPi，应把第11行和14行改为：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp; const float kPi;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp; Student(int age = 18, <span style="color:#e74c3c">const float kPi = 3.14159</span>) : age_(age), <span style="color:#e74c3c">kPi (kPi)</span>{ kCount++; }</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">这样才不会出现编译错误。构造每个Student对象时都为常量kPi赋初值，可以赋不同的初值。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp; <strong>问题一</strong>，你的输出地址语句：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp; printf("&amp;s1.kPi\t%p\n", s1.kPi);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp; printf("&amp;s2.kPi\t%p\n", s2.kPi);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">是错误的，要输出对象成员变量s1.kPi的内存地址，前面必须加上&amp;，应改为：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp; printf("&amp;s1.kPi\t%p\n", <span style="color:red">&amp;</span>s1.kPi);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp; printf("&amp;s2.kPi\t%p\n", <span style="color:red">&amp;</span>s2.kPi);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">这样输出的常成员kPi地址结果就应该与用：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp; cout &lt;&lt; "&amp;s1.kPi\t" &lt;&lt; (int*)&amp;s1.kPi &lt;&lt; endl;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp; cout &lt;&lt; "&amp;s2.kPi\t" &lt;&lt; (int*)&amp;s2.kPi &lt;&lt; endl;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">输出的结果一致了。Student类中的常成员kPi在每一个Student对象中都会有一个。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp; 问题二，代码最后三行，打印类中常静态常量地址：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp; &nbsp;cout &lt;&lt; "s1.kAmountOfClass\t" &lt;&lt; (int*)&amp;s1.kAmountOfClass &lt;&lt; endl;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp; &nbsp;cout &lt;&lt; "s2.kAmountOfClass\t" &lt;&lt; (int*)&amp;s2.kAmountOfClass &lt;&lt; endl;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp; &nbsp;cout &lt;&lt; "s1.kAmountOfClass\t" &lt;&lt; (int*)&amp;Student::kAmountOfClass &lt;&lt; endl;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">通不过编译的原因是，你把整型常量地址强制转换为普通整型地址是不允许的，应该转化为整型常量地址：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp; &nbsp;cout &lt;&lt; "s1.kAmountOfClass\t" &lt;&lt; (int* <span style="color:red">const</span>)&amp;s1.kAmountOfClass &lt;&lt; endl;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp; &nbsp;cout &lt;&lt; "s2.kAmountOfClass\t" &lt;&lt; (int* <span style="color:red">const</span>)&amp;s2.kAmountOfClass &lt;&lt; endl;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp; &nbsp;cout &lt;&lt; "s1.kAmountOfClass\t" &lt;&lt; (int*<span style="color:red"> const</span>)&amp;Student::kAmountOfClass &lt;&lt; endl;</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2020-05-03 16:41
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+杨希杰
+
+
+
+
+
+
+ 
+ 
+  谢谢老师！
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+2#：2020-05-04 18:26
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		2
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   52
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

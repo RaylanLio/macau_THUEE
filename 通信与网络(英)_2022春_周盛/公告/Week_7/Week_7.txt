@@ -1,0 +1,8 @@
+题目: Week 7
+发布人: 贾宇宽
+发布时间: 2022-04-02 22:01
+
+内容: Modulation, noisy channel, and the matched filter, the whole process of passband transmission is an LTI system, which lays the foundation for a simplification as the equivalent baseband transmission model, where we investigate the detection problem.
+The straightforward decision rule is MAP (Maximum A Posteriori). If the prior distribution of symbols is unknown, the ML (Maximum Likelihood) is used, assuming the symbols are equiprobable. Further, if we consider the Gaussian noise, the MD (Minimum Distance) is the simplest decision rule. 
+The recipe for deriving the SEP (Symbol Error Probability) is first expressing the SEP with an abstract A and sigma by a decision rule, then turning into the SEP-SNR relationship, finally replacing SNR with 2E_s/n_0, which is the SNR after the matched filter, because the detection always happens after the MF. Antipodal signaling has a better SEP performance than non-antipodal one because the former is is more efficient.
+Reminder: Problem Set 3 is due next Sunday.

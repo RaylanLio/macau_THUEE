@@ -1,0 +1,177 @@
+课程：计算机程序设计基础（1）
+内容：我的程序不能通过函数进行排序。。。想问一下错在哪。。。
+学号：3224d830f920eb569ea2117c34c9d30d
+姓名：戴陈晟
+发布时间:2019-12-08 22:52:22
+最后回复：孙甲松
+回复时间：2019-12-09 18:50:53
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic我的程序不能通过函数进行排序。。。想问一下错在哪。。。
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+戴陈晟
+
+
+
+
+我在程序中输入从101到120的任意一个学号，输出其总分
+然后按总分从高到底输出
+但是我的程序只能输出原顺序，交换不了顺序是为什么
+#include<stdio.h> #include<string.h> #define STU struct data struct data {int num; char name[10];  int marks[6];}; void order(STU *p[],int n) {     int i,j,k;     STU *w;     for(i=0;i<n-1;i++)     {         k=i;         for(j=i+1;j<n;j++)         {             if(p[j]->marks<p[k]->marks)                 k=j;         }         if(k!=i)         {             w=p[i];p[i]=p[k];p[k]=w;         }     }     return; } int main(){int n,i=0; struct data st[20]= { {101,"hu",100,98,97,96,97} , {102,"wang",99,98,97,96,95}, {103,"rio",53,65,75,80,64}, {104,"nm$l",76,76,78,97,86}, {105,"pa",68,87,68,97,67}, {106,"shit",67,78,67,87,78}, {107,"zhao",88,99,77,66,55}, {108,"qian",55,66,77,88,99}, {109,"sun",56,67,67,56,76}, {110,"li",86,66,56,67,76}, {111,"zhou",67,56,65,78,67}, {112,"wu",56,65,67,76,76,}, {113,"zheng",67,78,88,77,88}, {114,"niu",88,87,87,79,89}, {115,"pi",76,77,86,78,67}, {116,"woqu",67,78,78,67,87}, {117,"wdnmd",78,67,78,67,78}, {118,"hahah",78,67,77,88,99}, {119,"end",89,66,77,88,77}, {120,"fcuk",77,66,77,88,88}}; STU *p[20]; for(i=0;i<=19;i++) p[i]=&st[i]; printf("please input the number of the students that you want to see (101 to 120)\n"); scanf("%d",&n); for(i=0;i<=19;i++) st[i].marks[5]=st[i].marks[0]+st[i].marks[1]+st[i].marks[2]+st[i].marks[3]+st[i].marks[4]; i=n-101; printf("%d  \n",st[i].marks[5]); order(p,20); for(i=0;i<=19;i++) printf("%d   ",p[i]->marks[5]); return 0;}
+我输入学生学号，得到的是没有排序的序列。。。
+
+
+
+Reply
+
+Starter： 2019-12-08 22:52
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">你的排序程序头一眼看上去没啥问题，等仔细看到：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(p[j]-&gt;marks&lt;p[k]-&gt;marks)</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; k=j;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">我才反应过来，在结构体中定义：int marks[6]; 因此marks是个数组名，是数组的内存地址值，你这么写，成了比较两个结构体中数组内存地址值的大小，所以没按照真正的成绩排序。</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-12-09 18:50
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   33
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,257 @@
+课程：计算机程序设计基础（1）
+内容：如何判断输入的数据是否为整型数据？
+学号：183c093a3779befd8a0fc845f51e9112
+姓名：钟敏朝
+发布时间:2019-10-26 10:22:36
+最后回复：钟敏朝
+回复时间：2019-11-04 00:35:39
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic如何判断输入的数据是否为整型数据？
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+钟敏朝
+
+
+
+
+课本练习5第19题
+我觉得“错误输入”应该不仅是非四位的整数，还应包括浮点数。
+可以看到，当小数点后足够小的时候，用强制转化后相比较的方法无法判断输入是否为整型数。
+我的问题：如何判断输入的数是不是整型数（精确的方法）？
+ 
+源代码：（后附运行结果）
+#include<stdio.h>
+main()
+{
+    double y;
+    int x,a,b,c,d,t;
+    printf("input a four figures number\n");
+    scanf("%lf",&y);
+    x=(int)(y);
+    if(x!=y) printf("error input!\n");
+    else if(x>9999||x<1000) printf("error input!\n");
+    else
+    {
+    a=x/1000;
+    b=(x%1000)/100;
+    c=(x%100)/10;
+    d=x%10;
+    printf("inverted number:%d%d%d%d\n",d,c,b,a);
+    if(a<b) t=a,a=b,b=t;
+    if(a<c) t=a,a=c,c=t;
+    if(a<d) t=a,a=d,d=t;
+    if(b<c) t=b,b=c,c=t;
+    if(b<d) t=b,b=d,d=t;
+    if(c<d) t=c,c=d,d=t;
+    printf("maximum:%d%d%d%d\n",a,b,c,d);
+    printf("minimum:%d%d%d%d\n",d,c,b,a);
+    }
+}
+ 
+input a four figures number
+1234.5
+error input!
+请按任意键继续. . .
+ 
+input a four figures number
+1234.000000000000001
+inverted number:4321
+maximum:4321
+minimum:1234
+请按任意键继续. . .
+
+
+
+Reply
+
+Starter： 2019-10-26 10:22
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">可以直接读入整数，判断输入是否成功，不成功则输入的不是整数：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp; int x;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp; if (scanf("%d",&amp;x) &lt; 1)</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; printf("error input!\n");</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp; while(getchar()!=’\n’); /* 读掉输入缓冲区中的非整数输入 */</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">这样输入1234.0也不算整数。</span></p> 
+ 
+
+
+
+
+Reply(1)
+Collapse
+
+1#：2019-10-31 19:06
+
+
+
+
+
+
+
+
+钟敏朝： 
+ 
+ 
+  老师，这样子还是不行啊。。。
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+批注 2019-11-04 003446.jpg85.51K Down
+
+
+
+
+
+
+
+
+
+2019-11-04 00:35
+Reply
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		2
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   39
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

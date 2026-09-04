@@ -1,0 +1,197 @@
+课程：计算机程序设计基础（2）
+内容：关于virtual 不明确继承的问题
+学号：9c3ecd7584aa9e0b596646a261fc977f
+姓名：张庚瀚
+发布时间:2020-04-07 15:06:22
+最后回复：张庚瀚
+回复时间：2020-04-09 21:31:08
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic关于virtual 不明确继承的问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+张庚瀚
+
+
+
+
+#include<iostream> #include<cstdlib> #include<cmath> using namespace std; class Point{ public:     Point(double a=0,double b=0):x(a),y(b){cout<<"Point构造";Point::Print();}     Point(const Point &p):x(p.x),y(p.y){};     virtual ~Point(){cout<<"Point析构";Point::Print();}     virtual double GetArea(){return 0.0;}     virtual void Print() const{cout<<"("<<x<<","<<y<<")"<<endl;} private:     double x;     double y;     };
+class Circle:virtual public Point{ public:     Circle(double x,double y,double r):Point(x,y),R(r){cout<<"Circle构造";Circle::Print();}     ~Circle(){cout<<"Circle析构";Circle::Print();}     Circle(const Circle &c):Point(c),R(c.R){};     virtual double GetArea() const{return 3.1415*R*R;}     virtual void Print() const{cout<<R;Point::Print();} private:     double R; }; class Square:virtual public Point{ public:     Square(double x,double y,double a):Point(x,y),A(a){cout<<"Square构造";Square::Print();}     ~Square(){cout<<"Square析构";Square::Print();}     Square(const Square &s):Point(s),A(s.A){};     virtual double GetArea() const{return A*A;}     virtual void Print() const{cout<<A;Point::Print();} private:     double A;};     class Margin:public Square,public Circle{     public:         Margin(double x,double y,double r,double a):Point(x,y),Circle(x,y,r),Square(x,y,a),R(r),A(a){cout<<"margin构造";}         ~Margin(){cout<<"margin析构";}         Margin(const Margin& m):Point(m),Circle(m),Square(m),R(m.R),A(m.A){};         virtual double GetArea() const;         //virtual void Print() const{}//为什么必须要加，否则提示error C2250: “Margin”:“void Point::Print(void) const”的不明确继承     private:     double R;     double A;};         double Margin::GetArea() const{             if(R>A*1.414)                 return Circle::GetArea()-Square::GetArea();             if(R<A/2)                 return Square::GetArea()-Circle::GetArea();             return 0.0;}         int main(){             Margin m1(1,1,1,4);             cout<<m1.GetArea()<<endl;             Margin m2(1,1,4,1);             cout<<m2.GetArea()<<endl;             Margin m3(1,1,2,2);             cout<<m3.GetArea()<<endl;             return 0;         }
+                 
+        
+ 
+ 
+
+
+
+Reply
+
+Starter： 2020-04-07 15:06
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>如果Margin类中不定义 virtual void Print() const 函数，那么其两个直接基类Square和Circle都有virtual void Print() const函数，因为没有派生类同族虚函数的掩蔽，就一同浮出水面，如有Margin m;&nbsp; 如果写m.Print( ); 编译器将无法确定你是要调用哪个直接基类的Print函数，所以出现编译错误。</p> 
+  <p>因此Margin类中必须要定义 virtual void Print() const 函数，比如写为：</p> 
+  <p>&nbsp; &nbsp; &nbsp; &nbsp;virtual void Print( ) const{ Square::Print( ); Circle::Print(); }</p> 
+  <p>就不会再有不确定性的问题。</p> 
+ 
+
+
+
+
+Reply(1)
+Collapse
+
+1#：2020-04-07 17:38
+
+
+
+
+
+
+
+
+张庚瀚： 
+ 
+ 
+  好的，谢谢老师！ 
+ 
+
+
+
+
+
+2020-04-09 21:31
+Reply
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		2
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   49
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

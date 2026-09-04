@@ -1,0 +1,195 @@
+课程：计算机程序设计基础（1）
+内容：关于free的问题
+学号：9c3ecd7584aa9e0b596646a261fc977f
+姓名：张庚瀚
+发布时间:2019-12-05 19:25:20
+最后回复：张庚瀚
+回复时间：2019-12-05 22:28:48
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic关于free的问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+张庚瀚
+
+
+
+
+ 
+#include<stdio.h> #include<math.h> #include<string.h> #include<stdlib.h>
+void ni(struct hh **head) {     struct hh*p,*q,*r;     if(*head==NULL) return;     p=*head;     q=p->next;     p->next=NULL;     while(q!=NULL)     {         r=q->next;         q->next=p;//注意要放在循环里         p=q;         q=r;     }     *head=p;//别忘了最后要将HEAD置尾     free(q);     //free(p);//为什么q和r可以free,而p不能？？？？？？？     free(r);     return; } main() {     struct hh *head,*p,*q;     int x;     head=NULL;//*head=NULL;     p=NULL;     scanf("%d",&x);     while(x>0)     {         p=(struct hh *)malloc(sizeof(struct hh));         p->x=x;         p->next=NULL;         if(head==NULL)             head=p;         else q->next=p;         q=p;         scanf("%d",&x);     }      ni(&head);     p=head;     while(p!=NULL)     {         printf("%5d",p->x);         q=p;         p=p->next;         free(q);     }
+    system("pause"); }
+ 
+
+
+
+Reply
+
+Starter： 2019-12-05 19:25
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>你的ni函数不是要把链表逆转吗？逆转完了，你干嘛要把p、q、r所指的结点都free掉？这样链表不被毁掉了吗？</p> 
+  <p>p是逆转后链表的头结点，free掉p不是把整个聊表都毁掉了吗？ 你等明天听完课在说吧。</p> 
+  <p>&nbsp;</p> 
+ 
+
+
+
+
+Reply(1)
+Collapse
+
+1#：2019-12-05 22:10
+
+
+
+
+
+
+
+
+张庚瀚： 
+ 
+ 
+  好的，谢谢老师 
+ 
+
+
+
+
+
+2019-12-05 22:28
+Reply
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		2
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   40
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,176 @@
+课程：计算机程序设计基础（2）
+内容：关于动态内存与类
+学号：356cb20a3c935fe2cf4332d09eb8cc4f
+姓名：任少睿
+发布时间:2020-09-05 14:56:04
+最后回复：孙甲松
+回复时间：2020-09-08 17:20:25
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic关于动态内存与类
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+任少睿
+
+
+
+
+老师好！
+请问申请动态内存，比如：
+A* p=new A;
+这里如何给p所指向的那个内存做第一步构造呢？还是说不得不在构造函数中使用缺省值，然后后面再重新改？
+谢谢！
+
+
+
+Reply
+
+Starter： 2020-09-05 14:56
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>可以写为 A* p=new A(......);&nbsp;</p> 
+  <p>在构造对象A的同时直接赋相应初值。</p> 
+  <p>写为 A* p=new A;&nbsp; 将用A构造函数的缺省值来构造A，如果A构造函数没有缺省值，编译将出错。</p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2020-09-08 17:20
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   27
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,170 @@
+课程：计算机程序设计基础（1）
+内容：冒泡排序排不出结果
+学号：9ea9a0e90ef5b7b81023ef4915cb5c4e
+姓名：曾令安
+发布时间:2019-11-24 02:02:31
+最后回复：孙甲松
+回复时间：2019-11-26 19:45:36
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic冒泡排序排不出结果
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+曾令安
+
+
+
+
+#include<stdio.h> #include<string.h> void bubsort(char *p[],int n) {     int m,k,j,i;     char *d;     k=0;m=n-1;     while(k<m);     {         j=m-1;m=0;         for(i=k;i<=j;i++)             if(strcmp(p[i],p[i+1])>0)             {d=p[i];p[i]=p[i+1];p[i+1]=d;m=i;}         j=k+1;k=0;         for(i=m;i>=j;i--)             if(strcmp(p[i-1],p[i])>0)             {d=p[i];p[i]=p[i-1];p[i-1]=d;k=i;}     }     return; } main() {     char *p[9]={"zhang","gou","xu","zheng","mao","zhao","li","bai","qing"};     int k;     for(k=0;k<9;k++)     printf("%s  ",p[k]);     printf("\n");     bubsort(p,9);     for(k=0;k<9;k++)     printf("%s  ",p[k]); }
+
+
+
+Reply
+
+Starter： 2019-11-24 02:02
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  你在 while(k&lt;m)后多了一个分号，造成死循环。
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-11-26 19:45
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   45
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

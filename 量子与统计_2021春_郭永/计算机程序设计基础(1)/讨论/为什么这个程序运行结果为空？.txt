@@ -1,0 +1,185 @@
+课程：计算机程序设计基础（1）
+内容：为什么这个程序运行结果为空？
+学号：369964729cba3b0270532d8ba29d755e
+姓名：唐冬冬
+发布时间:2019-11-27 21:30:07
+最后回复：孙甲松
+回复时间：2019-11-28 12:06:49
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic为什么这个程序运行结果为空？
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+唐冬冬
+
+
+
+
+以下是作业第十二题的部分程序
+生成时一直警告必须有返回值，且printf里的形参和实参类型不同，
+调试时没有输出，为空。请问这个是怎么回事？
+#include<stdio.h> #include<stdlib.h> #include<math.h> #pragma warning(disable:4996) double zhishu(double x, double y, double * u, double * v) {  double m,n;  m = x; n = y;  *u = exp(m) * cos(y);  *v = exp(m) * sin(y);  printf("exp(%lf+j%lf)=%lf+j%lf", m, n, *u,* v);  printf('\n');  return; } main() {  double x = 2, y = 3;  double* u, * v;  u = &x; v =&y;  double zhishu(double x, double y, double *u, double *v); return 0; }  
+
+
+
+Reply
+
+Starter： 2019-11-27 21:30
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">编译结果：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; test.c(12) : warning C4047: “函数”: “const char *”与“int”的间接级别不同</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; test.c(12) : warning C4024: “printf”: 形参和实参 1 的类型不同</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; test.c(13) : warning C4033: “zhishu”必须返回值</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; test.c(20) : error C2143: 语法错误 : 缺少“;”(在“类型”的前面)</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify">&nbsp;</p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">第12行是：printf('\n');</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">要输出回车符也必须是双引号，printf("\n");</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 既然你的zhishu函数的返回值类型是double，为什么第13行写为；return;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">不返回任何值呢？如果确实不需要返回值就把函数返回值类型改为void。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 第20行：double zhishu(double x, double y, double *u, double *v);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">函数说明出现在了可执行语句u = &amp;x; v =&amp;y;之后，这是不允许的。如果你要调用函数zhishu，</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">应该写为： zhishu( x, y, u, v);&nbsp; 用x, y, u, v这4个实际参数去调用函数zhishu。</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-11-28 12:06
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   43
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

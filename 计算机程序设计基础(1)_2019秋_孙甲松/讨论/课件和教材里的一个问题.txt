@@ -1,0 +1,318 @@
+课程：计算机程序设计基础（1）
+内容：课件和教材里的一个问题
+学号：20dcd6f30d5e6683905f3729738ecdfa
+姓名：刘雪枫
+发布时间:2020-01-03 00:31:42
+最后回复：孙甲松
+回复时间：2020-01-03 16:18:01
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic课件和教材里的一个问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+刘雪枫
+
+
+
+
+课件里说让输入输出缓冲区同步，又下面的程序。
+但是教材里又说
+这个程序中fflush不起作用，这是为什么呢？什么时候fflush会起作用，什么时候不会呢？
+
+
+
+Reply
+
+Starter： 2020-01-03 00:31
+
+
+
+
+
+
+
+
+
+刘雪枫
+
+
+
+
+
+
+ 
+ 
+  <p>
+    
+   </p>
+  <div class="ckeditor-html5-img" style="text-align:center">
+   <img src="http://learn.tsinghua.edu.cn/b/wlxt/common/downloadFiles?wjid=2019011008_BBS_1577982813220264438cf14-9e9c-4694-8384-672809409e18&amp;wlkcid=2019-2020-1139283205" width="500">&nbsp;
+  </div> 
+  <p></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2020-01-03 00:33
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+刘雪枫
+
+
+
+
+
+
+ 
+ 
+  <p>
+    
+   </p>
+  <div class="ckeditor-html5-img" style="text-align:center">
+   <img src="http://learn.tsinghua.edu.cn/b/wlxt/common/downloadFiles?wjid=2019011008_BBS_1577982836869698ba9ac82-d3a3-4002-883a-b7869f25473a&amp;wlkcid=2019-2020-1139283205" width="500">&nbsp;
+  </div> 
+  <p></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+2#：2020-01-03 00:33
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  “a+b”方式比较特殊，既可以追加写，又可以读。追加写只能在文件尾部，而读又需要把文件指针移到前面有数据的位置。 因此此时如果读入后，不能用fflush刷新让输入输出缓冲区同步后就能写入，而必须用fseek移动文件指针才行。
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+3#：2020-01-03 16:18
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		3
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   55
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

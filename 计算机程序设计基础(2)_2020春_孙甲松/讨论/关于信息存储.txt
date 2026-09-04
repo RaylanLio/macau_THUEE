@@ -1,0 +1,174 @@
+课程：计算机程序设计基础（2）
+内容：关于信息存储
+学号：356cb20a3c935fe2cf4332d09eb8cc4f
+姓名：任少睿
+发布时间:2020-09-05 10:28:12
+最后回复：孙甲松
+回复时间：2020-09-08 17:04:11
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic关于信息存储
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+任少睿
+
+
+
+
+老师好！
+请问编号程序之后，比如第一题中的学生成绩，对于程序而言是每次启动都要重新从文件中读取已经输入过的数据吗？能不能有什么办法把这些数据直接存在程序内？省去每次读入这一环节？
+谢谢！
+
+
+
+Reply
+
+Starter： 2020-09-05 10:28
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>学生成绩管理系统，对于程序而言当然是每次启动都要重新从文件中读取已经输入过的数据，设想一下你在清华info的个人信息和成绩。</p> 
+  <p>数据和程序是相互独立的，程序是通用的与数据无关，可运行程序编译链接生成后就不能再修改。</p> 
+  <p>而且启动程序时，也是从存储媒体上加载读入程序，即使数据直接存在程序内，不也得有每次读入这一环节吗？</p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2020-09-08 17:04
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   35
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

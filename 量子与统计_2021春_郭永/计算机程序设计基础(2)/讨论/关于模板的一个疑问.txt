@@ -1,0 +1,243 @@
+课程：计算机程序设计基础（2）
+内容：关于模板的一个疑问
+学号：20dcd6f30d5e6683905f3729738ecdfa
+姓名：刘雪枫
+发布时间:2020-04-07 22:55:39
+最后回复：孙甲松
+回复时间：2020-04-09 17:44:14
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic关于模板的一个疑问
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+刘雪枫
+
+
+
+
+#include <iostream>
+template<typename _Elem> struct A1 {  _Elem ptr[10]; }; struct A2 {  static A1<A2*> a;  static int count;  A2() { if (count < 10)  a.ptr[count++] = this; } };
+ int A2::count = 0;
+ int main() {  A2 tmp;  return 0; }
+请问老师，这段代码为什么会报错（用的是VS）？
+错误是下面的：
+error LNK2001: 无法解析的外部符号 "public: static struct A1<struct A2 *> A2::a" (?a@A2@@2U?$A1@PAUA2@@@@A)
+
+
+
+Reply
+
+Starter： 2020-04-07 22:55
+
+
+
+
+
+
+
+
+
+刘雪枫
+
+
+
+
+
+
+ 
+ 
+  用g++编译也有类似的错误提示
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2020-04-07 23:09
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  出现连接错误的原因是，未给静态变量a赋初值。另一个静态变量count你给赋初值了。 你既然把模板用来定义这么诡异的A2类，就再想一想怎么给a赋初值吧。 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+2#：2020-04-09 17:44
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		2
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   86
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

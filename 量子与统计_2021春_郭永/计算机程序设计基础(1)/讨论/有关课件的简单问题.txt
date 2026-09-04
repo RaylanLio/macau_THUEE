@@ -1,0 +1,175 @@
+课程：计算机程序设计基础（1）
+内容：有关课件的简单问题
+学号：fa5cdfcf945d791f6e952bcde2a05f23
+姓名：张凯
+发布时间:2019-12-15 09:01:19
+最后回复：孙甲松
+回复时间：2019-12-16 21:41:52
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic有关课件的简单问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+张凯
+
+
+
+
+
+
+
+ 
+      请问为什么要q=p后再free(q)呀？不能直接free(p)吗？可能上课没好好听讲。。。
+  
+
+
+
+Reply
+
+Starter： 2019-12-15 09:01
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  直接free(p) 还怎么执行p=p-&gt;next呀？
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-12-16 21:41
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   28
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

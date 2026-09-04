@@ -1,0 +1,173 @@
+课程：计算机程序设计基础（1）
+内容：有关数组函数的报错
+学号：9674be8fbb85d1b0cccafb7b8d7134fa
+姓名：董佳林
+发布时间:2019-11-17 21:12:38
+最后回复：孙甲松
+回复时间：2019-11-18 12:20:21
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic有关数组函数的报错
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+董佳林
+
+
+
+
+#include <stdio.h> #include <string.h> #pragma warning (disable:4996) main() {     char a[100];      gets(a);      printf("%d", strlen(a)); }
+虽然可以运行，但为什么下面总有三个警告：
+严重性    代码    说明    项目    文件    行    禁止显示状态 警告    C6054    可能没有为字符串“a”添加字符串零终止符。    第九章    E:\清华课程\计算机程序设计基础\练习程序\第九章\第九章\源.C    8     警告    C4013     “gets”未定义；假设外部返回 int    第九章    E:\清华课程\计算机程序设计基础\练习程序\第九章\第九章\源.c    7     警告    C6001    使用未初始化的内存“a”。    第九章    E:\清华课程\计算机程序设计基础\练习程序\第九章\第九章\源.C    8    
+ 
+
+
+
+Reply
+
+Starter： 2019-11-17 21:12
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>在VS2008上没出现这种警告错误，不用理这类错误，估计只是提醒你字符串操作不要忘记添加字符串零终止符。</p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-11-18 12:20
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   46
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

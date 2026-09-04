@@ -1,0 +1,181 @@
+课程：计算机程序设计基础（1）
+内容：关于课件里的一个问题
+学号：20dcd6f30d5e6683905f3729738ecdfa
+姓名：刘雪枫
+发布时间:2019-12-14 18:36:18
+最后回复：孙甲松
+回复时间：2019-12-16 21:46:42
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic关于课件里的一个问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+刘雪枫
+
+
+
+
+对于课件里的这里：
+
+
+
+ 
+   当时说这会导致最后一行被输出两遍，那么，如果我把程序改成这样可以吗？
+  
+fgets(a, 80, fin);
+while (!feof(fin)) {
+     fputs(a, fout);
+     fgets(a, 80, fin);
+}
+
+
+
+Reply
+
+Starter： 2019-12-14 18:36
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  可以这样改。
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-12-16 21:46
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   32
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,170 @@
+课程：计算机程序设计基础（1）
+内容：请问应该如何将一个未知大小的字符串赋给字符数组呢？
+学号：d40e8f9075bd15334c7078761bd733be
+姓名：温迪雅
+发布时间:2019-12-01 15:00:40
+最后回复：孙甲松
+回复时间：2019-12-02 19:28:25
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic请问应该如何将一个未知大小的字符串赋给字符数组呢？
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+温迪雅
+
+
+
+
+亦即作业9第2题，尝试用char s[]但系统老显示错误，说s未知大小。是应该用malloc函数申请动态内存吗？请问一下具体操作步骤是什么呢？（感觉malloc函数还是要先知道字符串大小的范围才能去申请动态内存？）谢谢！
+
+
+
+Reply
+
+Starter： 2019-12-01 15:00
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p><span style="font-size:10.5pt">当然不能用</span><span style="font-size:10.5pt">char s[]</span><span style="font-size:10.5pt">定义字符串，只能先定义一个比较大的数组，假定能读入所输入的字符串。至于用</span><span style="font-size:10.5pt">malloc</span><span style="font-size:10.5pt">函数申请动态内存确实也需要先知道字符串大小，如果想编写一个完全能读入任意长度字符串的程序，还有点难度，这个以后再说。</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-12-02 19:28
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   39
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

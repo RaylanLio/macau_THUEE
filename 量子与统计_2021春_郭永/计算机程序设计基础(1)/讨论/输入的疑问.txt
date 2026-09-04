@@ -1,0 +1,193 @@
+课程：计算机程序设计基础（1）
+内容：输入的疑问
+学号：8be12a53801ab29375246203bb9487f6
+姓名：梁辰宇
+发布时间:2019-11-16 19:28:04
+最后回复：孙甲松
+回复时间：2019-11-18 19:22:51
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic输入的疑问
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+梁辰宇
+
+
+
+
+孙老师，请问为什么一个一个字符的输入是正确的但前面的输入方式却不行？
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+新建 DOC 文档 (2).doc98.50K Down
+
+
+
+
+
+
+
+
+Reply
+
+Starter： 2019-11-16 19:28
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">你为啥逐个读入字符要写为：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(i=0; i&lt;=49; i++)</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a[i] = getchar(),getchar();</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">这样写，循环执行时，每次a[i] = getchar()读入一个字符，逗号后面的getchar()会再读入一个字符扔掉，所以前面的输入方式不行。后面的一个一个字符的输入是正确的，原因是，每次你输入一个字符会输入一个回车符，这样恰好a[i] = getchar(),getchar();前面的getchar()读入字符给a[i]，后面的getchar()读掉回车符。</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-11-18 19:22
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   33
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

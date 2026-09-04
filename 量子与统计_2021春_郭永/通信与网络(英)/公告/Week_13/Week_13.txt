@@ -1,0 +1,15 @@
+题目: Week 13
+发布人: 李林涛
+发布时间: 2022-05-16 22:26
+
+内容: The recording of yesterday's class can be found at:        https://cloud.tsinghua.edu.cn/f/45bcebd13aa340818d39/ 
+Today we mainly talked about the Duplex and multi-access. There are two types of duplex communication systems: full-duplex and half-duplex. In a full-duplex system, both parties can communicate with each other simultaneously. In a half-duplex system, both parties can communicate with each other, but not simultaneously; the communication is one direction at a time. 
+For the multi-access protocols, we can divide them into three kinds: channelization protocols (e.g., FDMA, TDMA, and CDMA), controlled-access (e.g., polling and token passing), and random-access (e.g., ALOHA, slotted ALOHA, CSMA, and CSMA/CD). Channelization is a multiple-access method in which the available bandwidth of a link is shared in time, frequency, or through code among different nodes. In controlled access, the stations consult one another to find which station has the right to send. In random-access protocols, a station that has data to send uses a procedure defined by the protocol to make a decision on whether or not to send. 
+Next week we are going to talk about the remaining part of the random-access protocols. Then, we will start the new section on switch and route. Problem set 6 will be released next week. 
+ 
+Reminder: Problem set 5 is due this Sunday.
+ 
+Reference: Forouzan - Data Communications and Networking (5th ed) Chapter 12
+Sklar - Digital Communications Fundamental and Applications (2nd ed) 11.1.4, 11.3.1-11.3.2 
+Proakis - Digital Communications (5th ed) 16.1-16.2
+Bertsekas - Data Network (2nd ed) 4.2.2

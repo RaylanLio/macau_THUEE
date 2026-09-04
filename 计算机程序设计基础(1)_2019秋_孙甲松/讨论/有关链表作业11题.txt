@@ -1,0 +1,245 @@
+课程：计算机程序设计基础（1）
+内容：有关链表作业11题
+学号：d40e8f9075bd15334c7078761bd733be
+姓名：温迪雅
+发布时间:2019-12-14 16:49:59
+最后回复：温迪雅
+回复时间：2019-12-18 20:48:06
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic有关链表作业11题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+温迪雅
+
+
+
+
+老师您好，我的程序编译成功，而且输出结果好像也是没问题的，但是其中的m->next=*head编译器警告说student*和node*不兼容，但我定义的m是struct student型指针，所以m->next不应该是结构体里的类型是struct node*的元素吗？为什么是student*类型的呢？谢谢老师！
+#include<stdio.h> #include<stdlib.h> struct student { int number;   char name[10];   int grade;   struct node *next; }; void inslst(struct student **head,struct student *p) { struct student *m;   int i;   m=(struct student*)malloc(sizeof(struct student));   if(m==NULL)   { printf("can't get memory!\n");     exit(1);   }   m->number=p->number,m->grade=p->grade;   for(i=0;i<10;i++) m->name[i]=p->name[i];   if(*head==NULL)   { *head=m;m->next=NULL;return;}   else   { m->next=*head;*head=m;return;} } void printlst(struct student *head) { while(head!=NULL)   { printf("      %-2d",head->number);     printf("               %-10s",head->name);  printf("       %-3d\n",head->grade);  head=head->next;   }   printf("\n"); } main() { struct student stu[13]={{2,"Lin",92},{3,"Zhang",87},{4,"Zhao",72},{5,"Ma",91},{9,"Zhen",85},    {11,"Wang",100},{12,"Li",86},{13,"Xu",83},{16,"Mao",78},{17,"Hao",95},{20,"Lu",82},    {21,"Song",76},{22,"Wu",88}};   struct student *head,*p;   int i;   void inslst();   void printlst();   head=NULL;   for(i=0;i<13;i++)   { p=&stu[i];     inslst(&head,p);   }   printf("                             学生成绩登记表\n");   printf("   学号（num）     姓名（name）     成绩（grade）\n");   printlst(head); }
+
+
+
+Reply
+
+Starter： 2019-12-14 16:49
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>编译结果：</p> 
+  <p>test.c(22) : warning C4133: “=”: 从“student *”到“node *”的类型不兼容<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; test.c(29) : warning C4133: “=”: 从“node *”到“student *”的类型不兼容</p> 
+  <p>第22行：m-&gt;next=*head;<strong> </strong></p> 
+  <p>第29行：head=head-&gt;next;</p> 
+  <p>head的类型是：struct student **head</p> 
+  <p>而next的类型是： struct node *next;&nbsp;</p> 
+  <p>类型不一致，连 head=head-&gt;next;都不能做。你重新梳理一下思路。</p> 
+  <p>&nbsp;</p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-12-18 16:58
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+温迪雅
+
+
+
+
+
+
+ 
+ 
+  谢谢老师！我把struct student 打成struct node了（。
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+2#：2019-12-18 20:48
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		2
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   66
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

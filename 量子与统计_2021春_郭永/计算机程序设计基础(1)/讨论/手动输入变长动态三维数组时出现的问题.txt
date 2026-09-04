@@ -1,0 +1,180 @@
+课程：计算机程序设计基础（1）
+内容：手动输入变长动态三维数组时出现的问题
+学号：c5e02d2a467727843b8e1c25046f1cc6
+姓名：龙玮杭
+发布时间:2019-11-24 10:27:50
+最后回复：孙甲松
+回复时间：2019-11-26 19:54:47
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic手动输入变长动态三维数组时出现的问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+龙玮杭
+
+
+
+
+老师您好！手动输入变长动态三维数组时，
+会出现未经处理的异常
+0x00E5526E 处有未经处理的异常(在 Project1.exe 中): 0xC0000005: 写入位置 0xCDCDCDCD 时发生访问冲突。
+请问这是为什么
+#include<stdio.h> #include<stdlib.h> #pragma warning(disable:4996) void main() {     double*** p;     int k, i, j, m, n,z,x=0;     scanf("%d", &n);     p = (double***)malloc(sizeof(double**)* n);     scanf("%d", &m);     for(i=0;i<n;i++)     {         p[i] = (double(**))malloc(sizeof(double*)* m);     }     scanf("%d", &k);     for (i = 0; i < n; i++)     {         for (j = 0; j < m; j++);         p[i][j] = (double*)malloc(sizeof(double)* k);     }      for(i=0;i<n;i++)         for(j=0;j<m;j++)             for(z=0;z<k;z++)             {                 p[i][j][z] = x; x++;                 printf("%7.1%f", p[i][j][z]);                 if (z == k - 1)printf("\n");                 if (j == m - 1)printf("\n");             }       }
+
+
+
+Reply
+
+Starter： 2019-11-24 10:27
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">你的程序两个问题，一是：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; for (i = 0; i &lt; n; i++)</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; {&nbsp;&nbsp;&nbsp; for (j = 0; j &lt; m; j++);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;p[i][j] = (double*)malloc(sizeof(double)* k);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; }</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">中j变量的for循环后多了一个分号。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp; 二是：printf("%7.1%f", p[i][j][z]); 输出格式中多了一个%吗，应改为："%7.1f"</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-11-26 19:54
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   44
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

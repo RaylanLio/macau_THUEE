@@ -1,0 +1,388 @@
+课程：计算机程序设计基础（1）
+内容：练习4 第13题莫名其妙的问题
+学号：fb5ad270dce45a5744f16e7cde73b80e
+姓名：陈昊宁
+发布时间:2019-10-15 18:01:58
+最后回复：陈昊宁
+回复时间：2019-10-17 22:32:53
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic练习4 第13题莫名其妙的问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+陈昊宁
+
+
+
+
+ 
+#include <stdio.h> main() {     int i=7,t[10010];     long int a,b;     printf("please input an number less than 256: ");     scanf("%ld",&a);     b=a;     if(a==1) {printf("1--->00000001\n");}     else     {     while(a>=1)     {             if(a%2==1)             {                 t[i]=1;                 i--;                 a=(a-1)/2;                 if(a==1)                 {                      t[i]=1;                     t[i-1]=0;t[i-2]=0;t[i-3]=0;t[i-4]=0;t[i-5]=0;t[i-6]=0;t[i-7]=0;t[i-8]=0;                     break;                 }             }             else             {                 t[i]=0;                 i--;                 a=a/2;                 if(a==1)                 {                      t[i]=1;                     t[i-1]=0;t[i-2]=0;t[i-3]=0;t[i-4]=0;t[i-5]=0;t[i-6]=0;t[i-7]=0;t[i-8]=0;                     break;                 }             }     }     printf("%ld--->%d%d%d%d%d%d%d%d\n",b,t[0],t[1],t[2],t[3],t[4],t[5],t[6],t[7]);     }     system("pause"); }
+
+    
+  
+ 
+
+    
+  
+
+    
+  
+以上是我的整个程序，包含定义a,b，并对b赋值的部分和输出的部分。最终结果是二进制转换没有问题，但--->前的那个b经常爆0。无论是long long int 还是int，输出的时候b都是0。请问这是啥情况啊。
+ 
+ 
+
+ 
+  
+ 
+
+
+
+Reply
+
+Starter： 2019-10-15 18:01
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  你能否把整个程序贴上来？掐头去尾的部分程序没法调试重现你的问题。
+ 
+
+
+
+
+Reply(1)
+Collapse
+
+1#：2019-10-15 10:03
+
+
+
+
+
+
+
+
+陈昊宁： 
+ 
+ 
+  孙老师您好！我已贴上了整个程序。
+ 
+
+
+
+
+
+2019-10-15 18:02
+Reply
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>运行结果：</p> 
+  <p>please input an number less than 256: 254<br> 0---&gt;11111110<br> 请按任意键继续. . .</p> 
+  <p>并且会出现致命错误，警告栈中t附近的内存被毁掉了。原因是：</p> 
+  <p>&nbsp;t[i-1]=0;t[i-2]=0;t[i-3]=0;t[i-4]=0;t[i-5]=0;t[i-6]=0;t[i-7]=0;t[i-8]=0;</p> 
+  <p>当程序开始，i=7，无论 a%2==1 是否成立，都会i--，此时i值为6，</p> 
+  <p>i-7=-1，i-8=-2，因此t[i-7]=0;t[i-8]=0; 都数组越界了，所以把数组t前面的b值给置为0。</p> 
+  <p>正确的做法是去掉这一行： &nbsp;t[i-1]=0;t[i-2]=0;t[i-3]=0;t[i-4]=0;t[i-5]=0;t[i-6]=0;t[i-7]=0;t[i-8]=0;</p> 
+  <p>在定义数组时赋初值0：&nbsp; &nbsp;int i=7,t[10010]={0};</p> 
+  <p>现在的运行结果是：</p> 
+  <p>please input an number less than 256: 254<br> 254---&gt;11111110<br> 请按任意键继续. . .</p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+2#：2019-10-16 11:03
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">其实程序没必要写这么复杂，可以简化为：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">#include &lt;stdio.h&gt;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">#include &lt;stdlib.h&gt;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">main()</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">{</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int i=7,t[8]={0};</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; long int a,b;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; printf("please input an number less than 256: ");</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; scanf("%ld",&amp;a);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; b=a;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; while(a&gt;=1)</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; {</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; t[i]=a%2;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i--;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a=a/2;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; }</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; printf("%ld---&gt;%d%d%d%d%d%d%d%d\n",b,t[0],t[1],t[2],t[3],t[4],t[5],t[6],t[7]);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; system("pause");</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">}</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">你想一想为什么。</span></p> 
+ 
+
+
+
+
+Reply(1)
+Collapse
+
+3#：2019-10-16 11:12
+
+
+
+
+
+
+
+
+陈昊宁： 
+ 
+ 
+  明白了！谢谢孙老师！一时间忘了余数其实就是二进制的位数...
+ 
+
+
+
+
+
+2019-10-17 22:32
+Reply
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		5
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   113
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

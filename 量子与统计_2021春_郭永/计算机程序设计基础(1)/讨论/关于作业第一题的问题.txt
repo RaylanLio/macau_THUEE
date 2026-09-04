@@ -1,0 +1,216 @@
+课程：计算机程序设计基础（1）
+内容：关于作业第一题的问题
+学号：53ba8a8ad0cc079892277ce5c501406c
+姓名：侯启钧
+发布时间:2019-12-13 17:14:05
+最后回复：侯启钧
+回复时间：2019-12-14 14:15:38
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic关于作业第一题的问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+侯启钧
+
+
+
+
+问题见附件，谢谢！
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+关于作业第一题的问题.docx110.05K Down
+
+
+
+
+
+
+
+
+Reply
+
+Starter： 2019-12-13 17:14
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">如果输出在double数之间加一逗号，fprintf(fp, "%lf,", a[i]); 那么就把每个double分割开了，读入时在输入格式double数后也加一逗号，就能正确读入每一个double数。而如果用</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">fprintf(fp, "%lf", a[i]);</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">将会导致输出到文件中的数据是你打开文件所看到的，首位相连：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">1.0000002.0000003.00000044.0000006.000000……..</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">这样当用fscanf(fp, "%lf", &amp;b); 读入时，每次遇到第二个小数点才停止，读入的实际上是：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">1.0000002&nbsp; .0000003&nbsp; .00000044&nbsp; .0000006&nbsp; .0000006 ……..</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">因为输出是6位小数，四舍五入，所以结果是：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">1.000000&nbsp; 0.000000&nbsp; 0.000000&nbsp; 0.000001&nbsp; 0.000000 ……..</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">因此输出到文件中的数据必须要有格式控制，两个double数之间应该有空格或者回车。</span></p> 
+ 
+
+
+
+
+Reply(1)
+Collapse
+
+1#：2019-12-13 18:48
+
+
+
+
+
+
+
+
+侯启钧： 
+ 
+ 
+  明白了 谢谢老师！
+ 
+
+
+
+
+
+2019-12-14 14:15
+Reply
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		2
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   61
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

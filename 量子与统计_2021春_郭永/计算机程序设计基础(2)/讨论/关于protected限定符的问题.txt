@@ -1,0 +1,172 @@
+课程：计算机程序设计基础（2）
+内容：关于protected限定符的问题
+学号：9c3ecd7584aa9e0b596646a261fc977f
+姓名：张庚瀚
+发布时间:2020-05-11 19:07:08
+最后回复：孙甲松
+回复时间：2020-05-12 00:25:35
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic关于protected限定符的问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+张庚瀚
+
+
+
+
+老师您好，在下面代码中，似乎派生类对其基类类型对象的 protected 成员并没有特殊访问权限，不知道为什么
+class A { protected :     int i; }; class B:public A { public:     void change_with_obj(const A& a){a.i=10;}//error     void change_in_class(){i=10;}//ok };
+ 
+
+
+
+Reply
+
+Starter： 2020-05-11 19:07
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p><span style="font-size:10.5pt">派生类的成员函数可以直接访问当前对象的基类的保护成员，但不能直接访问同类其它对象的基类的保护成员。</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2020-05-12 00:25
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   36
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

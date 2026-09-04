@@ -1,0 +1,191 @@
+课程：计算机程序设计基础（1）
+内容：老师，这是什么情况？要如何解决？
+学号：8ae58a2a108539bff67d3f88e75cdaea
+姓名：余桃方
+发布时间:2019-10-20 10:54:54
+最后回复：孙甲松
+回复时间：2019-10-20 22:19:09
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic老师，这是什么情况？要如何解决？
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+余桃方
+
+
+
+
+老师，这是什么情况？要如何解决？
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+问题.doc144.00K Down
+
+
+
+
+
+
+
+
+Reply
+
+Starter： 2019-10-20 10:54
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>C源程序文件不要存为 .cpp而应该存为 .c</p> 
+  <p>运行程序时选“调试”菜单中的： 开始执行（不调试）</p> 
+  <p>再试一下。</p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-10-20 22:19
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   63
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

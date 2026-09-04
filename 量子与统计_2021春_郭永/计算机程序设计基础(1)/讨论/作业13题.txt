@@ -1,0 +1,172 @@
+课程：计算机程序设计基础（1）
+内容：作业13题
+学号：f4b26e29bcb790b71d1957e0abd19e6d
+姓名：曾思航
+发布时间:2019-11-28 16:14:24
+最后回复：孙甲松
+回复时间：2019-11-28 21:36:13
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic作业13题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+曾思航
+
+
+
+
+int main() {     char *a[]={"zhang","gou","xu","zheng","mao","zhao","li","bai","qing"};     int i;     for(i=0;i<9;i++)         printf("%s  ",a[i]);     printf("\n");     bubsort(9,a);     for(i=0;i<9;i++)         printf("%s  ",a[i]);     return 0; }
+代码里面的数组长度9能否用其他方法替代？使得代码更有普适性。试了strlen(a)和sizeof(a)都不行
+
+
+
+Reply
+
+Starter： 2019-11-28 16:14
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>可以的，int n;<br> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; n = sizeof(a)/sizeof(char *);</p> 
+  <p>可以求出指针数组a的长度<span style="font-size:10.5pt">，代码就更有普适性了。</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-11-28 21:36
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   53
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

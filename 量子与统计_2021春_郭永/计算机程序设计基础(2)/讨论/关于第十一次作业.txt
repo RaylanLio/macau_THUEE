@@ -1,0 +1,192 @@
+课程：计算机程序设计基础（2）
+内容：关于第十一次作业
+学号：9c3ecd7584aa9e0b596646a261fc977f
+姓名：张庚瀚
+发布时间:2020-04-28 15:10:25
+最后回复：张庚瀚
+回复时间：2020-04-28 16:16:11
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic关于第十一次作业
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+张庚瀚
+
+
+
+
+不太理解第一题题目中“上溢出”“下溢出”的意思，是说要判断new的参数吗？谢谢老师
+
+
+
+Reply
+
+Starter： 2020-04-28 15:10
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>“上溢出”“下溢出”一般是指对容器类对象的操作，像数组、栈、队列等，</p> 
+  <p>向已经满了的容器中放入元素会引起“上溢出”，</p> 
+  <p>当容器空了，还要从容器中取数据就会引起“下溢出”。</p> 
+  <p>与new无关。</p> 
+ 
+
+
+
+
+Reply(1)
+Collapse
+
+1#：2020-04-28 15:24
+
+
+
+
+
+
+
+
+张庚瀚： 
+ 
+ 
+  好的，谢谢老师
+ 
+
+
+
+
+
+2020-04-28 16:16
+Reply
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		2
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   94
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

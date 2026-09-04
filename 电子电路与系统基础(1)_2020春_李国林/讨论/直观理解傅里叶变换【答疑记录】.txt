@@ -1,0 +1,173 @@
+课程：电子电路与系统基础（1）
+内容：直观理解傅里叶变换【答疑记录】
+学号：9e68b55ae34b5d79758f6f38fe4b7482
+姓名：李瑄
+发布时间:2020-02-20 18:41:07
+最后回复：刘雨玚
+回复时间：2020-03-23 23:28:36
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic直观理解傅里叶变换【答疑记录】
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+李瑄
+
+
+
+
+直观展示傅里叶变换的课外材料，以飨 有兴趣更深入了解的同学：
+[3B1B]形象展示傅里叶变换-bilibili（另：3B1B的图形化讲解线性代数系列也很棒）
+【直观详解】让你永远忘不了的傅里叶变换解析
+今后同学们在数学/信号与系统/控制/信号处理课程中专门学习到时，可以和电路里的应用实例互相印证，来从多个角度更深刻理解傅里叶变换/Laplace变换。
+
+
+
+Reply
+
+Starter： 2020-02-20 18:41
+
+
+
+
+
+
+
+
+
+刘雨玚
+
+
+
+
+
+
+ 
+ 
+  666666666666 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2020-03-23 23:28
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   127
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

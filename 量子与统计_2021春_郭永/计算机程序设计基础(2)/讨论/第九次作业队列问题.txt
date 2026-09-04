@@ -1,0 +1,298 @@
+课程：计算机程序设计基础（2）
+内容：第九次作业队列问题
+学号：fa5cdfcf945d791f6e952bcde2a05f23
+姓名：张凯
+发布时间:2020-04-25 23:21:44
+最后回复：孙甲松
+回复时间：2020-04-26 00:47:24
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic第九次作业队列问题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+张凯
+
+
+
+
+#include <iostream>
+#include <math.h>
+#include <string.h>
+using namespace std;
+template <class T>
+class Queue{
+private:
+    T *Front,*Tail;
+    int max,now;
+public:
+    Queue(int size);
+    Queue(Queue &p);
+    virtual ~Queue();
+    void In(const T &e);
+    const T &Out();
+    bool Empty();
+};
+template <class T>
+Queue<T>::Queue(int size){
+    Front=new T[max=size];
+    now=0;
+    Tail=Front;
+}
+template <class T>
+Queue<T>::Queue(Queue &p){
+    Front=new T[max=p.max];
+    Tail=p.Tail;
+    now=p.now;
+    for (int i=0; i<max; i++) {
+        Front[i]=p.Front[i];
+    }
+}
+template <class T>
+Queue<T>::~Queue(){
+    delete []Front;
+}
+template <class T>
+void Queue<T>::In(const T &e){
+    if(now>=max)
+        cout<<"队列已满！"<<endl;
+    else
+        now++;
+        Front[now-1]=e,Tail++;
+}
+template <class T>
+const T &Queue<T>::Out(){
+    if (now<=0) {
+        cout<<"队列为空！"<<endl;
+        return 0;
+    }
+    else
+    {
+        T t=Front[0];
+        for (int i=0; i<now-1; i++)
+            Front[i]=Front[i+1];
+        Front[now-1]=NULL;
+        Tail--;
+        now--;
+        return t;
+    }
+}
+template <class T>
+bool Queue<T>::Empty(){
+    return (now<=0);
+}
+int main(){
+    int i;
+    double j;
+    Queue <int> IntQ(10);
+    Queue<double> DoubleQ(10);
+    for (i=1; i<=11; i++) {
+        IntQ.In(i);
+    }
+    Queue<int> IntQ2(IntQ);
+    while (!IntQ2.Empty()) {
+        cout<<IntQ2.Out()<<" ";
+    }
+    cout<<endl;
+    cout<<IntQ2.Out()<<endl;
+    for (j=11.0; j>=0; j--) {
+        DoubleQ.In(j);
+    }
+    Queue<double> DoubleQ2(DoubleQ);
+    while (!DoubleQ.Empty()) {
+        cout<<DoubleQ.Out()<<" ";
+    }
+    cout<<endl;
+    cout<<DoubleQ.Out()<<endl;
+}
+ 
+ 
+为什么DoubleQ倒着赋值就会出现结果不对？
+结果如下：
+队列已满！
+1 2 3 4 5 6 7 8 9 11 
+队列为空！
+0
+队列已满！
+队列已满！
+11 10 9 8 7 6 5 4 3 0 
+队列为空！
+0
+Program ended with exit code: 0
+ 
+3和0之间的值去哪里了呢？正向赋值就没有问题。
+ 
+
+
+
+Reply
+
+Starter： 2020-04-25 23:21
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>两个问题，</p> 
+  <p>第一，Out函数不能返回引用，因为return t;是返回局部变量。</p> 
+  <p>第二，既然提示队列满了，就不能再入队，In函数模板应改为：</p> 
+  <p>template &lt;class T&gt;</p> 
+  <p>void Queue&lt;T&gt;::In(const T &amp;e){</p> 
+  <p>&nbsp;&nbsp;&nbsp; if(now&gt;=max)</p> 
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout&lt;&lt;"队列已满！"&lt;&lt;endl;</p> 
+  <p>&nbsp;&nbsp;&nbsp; else</p> 
+  <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;&nbsp; now++;</strong></p> 
+  <p><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Front[now-1]=e,Tail++;</strong></p> 
+  <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</strong></p> 
+  <p>}</p> 
+  <p>运行结果为：</p> 
+  <p>队列已满！</p> 
+  <p>1 2 3 4 5 6 7 8 9 10</p> 
+  <p>队列为空！</p> 
+  <p>0</p> 
+  <p>队列已满！</p> 
+  <p>队列已满！</p> 
+  <p>11 10 9 8 7 6 5 4 3 2</p> 
+  <p>队列为空！</p> 
+  <p>0</p> 
+  <p>请按任意键继续. . .</p> 
+  <p>运行结果没有异常了。</p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2020-04-26 00:47
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   102
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

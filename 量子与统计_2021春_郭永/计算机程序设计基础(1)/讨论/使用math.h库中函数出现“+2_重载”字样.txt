@@ -1,0 +1,224 @@
+课程：计算机程序设计基础（1）
+内容：使用math.h库中函数出现&ldquo;+2 重载&rdquo;字样
+学号：193f84eca0260a550507aa8fd0cd9b35
+姓名：吴昊宸
+发布时间:2019-11-22 14:35:41
+最后回复：孙甲松
+回复时间：2019-11-22 17:45:18
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic使用math.h库中函数出现“+2 重载”字样
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+吴昊宸
+
+
+
+
+源代码
+#include<stdio.h>
+#include<string.h>
+#include<math.h>
+#pragma warning (disable:4996)
+void complex_exp(double *x,double *y)
+{
+double a=*x,b=*y;
+*x=exp(a)*cos(b);
+*y=exp(a)*sin(b);
+return;
+}
+ 
+void complex_ln(double *x,double *y)
+{
+double a=*x,b=*y;
+*x=log(sqrt(a*a+b*b));
+*y=atan2(b,a);
+return;
+}
+ 
+void complex_sin(double *x,double *y)
+{
+double a=*x,b=*y;
+*x=sin(a)*(exp(b)+exp(-b))/2;
+*y=cos(a)*(exp(b)-exp(-b))/2;
+return;
+}
+ 
+void complex_cos(double *x,double *y)
+{
+double a=*x,b=*y;
+*x=cos(a)*(exp(b)+exp(-b))/2;
+*y=-sin(a)*(exp(b)-exp(-b))/2;
+return;
+}
+main(int argc,char *argv[])
+{
+void (*p[])(double *x,double *y)={complex_exp,complex_ln,complex_sin,complex_cos};
+double u=2,v=3;
+int i;
+printf("计算结果是：\n");
+for (i=0;i<=3;i++)
+{
+    p[i](&u,&v);
+    printf("%f+j(%f)\n",u,v);
+}
+return 0;
+}
+ 
+ 
+当鼠标停留在从math.h库中调用的函数上时会出现“+2 重载”等字样
+例如，atan2函数显示的就是“double_cdecl atan2(double _Y,double _X) +2 重载”。
+对程序运行结果似乎没有影响，但是是因为什么原因呢？
+
+
+
+Reply
+
+Starter： 2019-11-22 14:35
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>&nbsp;</p> 
+  <p><span style="font-size:12.6667px">atan2函数可以有double，float，long double三种参数形式，在C++下他们是重载的。</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2019-11-22 17:45
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   40
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

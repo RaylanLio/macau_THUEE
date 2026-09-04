@@ -1,0 +1,284 @@
+课程：计算机程序设计基础（2）
+内容：关于从文本文件中读取
+学号：81c759644d8e9f384a7747ca12b6013c
+姓名：朱宏怀
+发布时间:2020-04-28 23:52:35
+最后回复：朱宏怀
+回复时间：2020-04-29 19:07:04
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic关于从文本文件中读取
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+朱宏怀
+
+
+
+
+第十一次作业第二题，我从一个文本文件读入学生信息，之后再排序，代码如下：
+#include<iostream> #include<fstream> #include<string> #include<iomanip> #include<cassert> #include<algorithm> using namespace std; class Student { public:     int sno, score;     string name; }; bool compare(const Student& Stu1, const Student& Stu2) {     if (Stu1.score > Stu2.score)         return 1;     if (Stu1.score < Stu2.score)         return 0;     if (Stu1.name < Stu2.name)         return 1;     if (Stu1.name > Stu2.name)         return 0;     if (Stu1.sno < Stu2.sno)         return 1;     else return 0; } int main() {     int n;     ifstream fin("StudentInfo.txt", ios_base::in);     assert(fin.is_open());     cout << "Please input the number of students you want to know!(not more than 30)" << endl;     cin >> n;     Student* Stu = new Student[n];     for (int i = 0; i < n; i++)     {         fin >> Stu[i].sno >> Stu[i].name >> Stu[i].score;         if (fin.eof())             break;         cout << setiosflags(ios_base::left) << setw(20) << Stu[i].sno << setw(16) << Stu[i].name             << resetiosflags(ios_base::right) << setw(10) << Stu[i].score << endl;     }     cout << endl << endl;     cout << "Sorted: " << endl;     fin.close();     sort(Stu, Stu + n - 1, compare);     for (int i = 0; i < n; i++)         cout << setiosflags(ios_base::left) << setw(20) << Stu[i].sno << setw(16) << Stu[i].name         << resetiosflags(ios_base::right) << setw(10) << Stu[i].score << endl;     delete[]Stu;     return 0; }
+运行结果正确，但有警告：
+   
+
+ 
+  
+
+   出现警告的地方就是从文件中读入学生信息处：fin >> Stu[i].sno >> Stu[i].name >> Stu[i].score;
+  
+
+   文本文件中的内容大致为：
+  
+
+   2019000001 Zhangsan 100
+  
+
+   2019000002 Lisi 99
+  
+
+    
+  
+
+   请问老师为什么会出现这个警告？谢谢！
+  
+ 
+
+
+
+Reply
+
+Starter： 2020-04-28 23:52
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">在VS2008上编译运行结果：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Please input the number of students you want to know!(not more than 30)</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">4</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">2019000001&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Zhangsan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 100</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">2019000002&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lisi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 99</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">2019000003&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Wangsan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 100</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">2019000004&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Xisi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 99</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify">&nbsp;</p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify">&nbsp;</p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">Sorted:</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">2019000003&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Wangsan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 100</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">2019000001 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zhangsan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 100</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">2019000002&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lisi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 99</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">2019000004&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Xisi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 99</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">请按任意键继续. . .</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify">&nbsp;</p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">没有重现你说的错误，但你的程序中</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp; if (fin.eof())</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">最好改为：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp; if (fin.fail())</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">读入不成功则终止。</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2020-04-29 17:39
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+朱宏怀
+
+
+
+
+
+
+ 
+ 
+  谢谢老师！也许是编译器的问题吧？这个警告好像没啥影响
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+2#：2020-04-29 19:07
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		2
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   74
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

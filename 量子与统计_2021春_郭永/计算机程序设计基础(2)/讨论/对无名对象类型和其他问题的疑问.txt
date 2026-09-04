@@ -1,0 +1,196 @@
+课程：计算机程序设计基础（2）
+内容：对无名对象类型和其他问题的疑问
+学号：0bc1f47158cbbbb9d86a6b6d9f2ae414
+姓名：吴博楠
+发布时间:2020-03-24 16:55:10
+最后回复：孙甲松
+回复时间：2020-03-25 18:59:00
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic对无名对象类型和其他问题的疑问
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+吴博楠
+
+
+
+
+见附件
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+问题.docx16.13K Down
+
+
+
+
+
+
+
+
+Reply
+
+Starter： 2020-03-24 16:55
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p>问题1&nbsp;&nbsp;</p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">即使把复制构造函数改为非常引用方式，在VS编译器上也未出现编译错误，所以这类问题跟编译器有关，不必去深究。我上次补充讲过，最好把复制构造函数改为常引用方式，这样对于常对象和普通对象都适用。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">complex a[3] = { complex(1,2),complex(2,3),complex(0,1) };</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">是逐个构造无名对象complex(1,2),complex(2,3),complex(0,1)作为数组a的元素对象值，只调用complex的构造函数，不会调用复制构造函数。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify">&nbsp;</p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">问题2</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">同样，即使把复制构造函数改为非常引用方式，在VS编译器上也未出现编译错误，所以不必去深究这类问题。但最好把复制构造函数都改为常引用方式。</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">&nbsp;&nbsp;&nbsp; c+a返回的无名对象，作为 (c+a)+d 中+的第一个形参，如果你在析构函数中加入打印信息，会看到c+a返回的无名对象会一直等(c+a)+d返回的无名对象析构后才析构掉。</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2020-03-25 18:59
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   48
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

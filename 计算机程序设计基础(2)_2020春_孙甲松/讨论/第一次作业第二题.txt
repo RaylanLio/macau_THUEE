@@ -1,0 +1,196 @@
+课程：计算机程序设计基础（2）
+内容：第一次作业第二题
+学号：c9d7cf6ba57f955a031395e732028306
+姓名：王潇然
+发布时间:2020-03-05 23:30:56
+最后回复：孙甲松
+回复时间：2020-03-06 11:42:06
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic第一次作业第二题
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+王潇然
+
+
+
+
+编写程序如下：
+#include<stdio.h> #pragma warning(disable:4996) char reverse(char p) {     int i;     char ret;     ret = 0;//先赋初值0     for (i = 0;i < 8;i++)     {         if ((p >> i) & 1)         {             ret |= 1 << (7 - i);         }     }     return ret; } int main() {     FILE* fp1, *fp2;     char* p=NULL;     int i, n;     #define N 1024     char buf[N];     if ((fp1 = fopen("file1.dat", "wb")) == NULL)     {         printf("cannot open file1 for write!\n");         exit(0);     }     if ((fp2 = fopen("file2.dat", "wb")) == NULL)     {         printf("cannot open file2 for write!\n");         exit(0);     }     fwrite("abc", 1, 3, fp1);     fwrite("123", 1, 3, fp1);     fclose(fp1);     if ((fp1 = fopen("file1.dat", "rb")) == NULL)     {         printf("cannot open file1 for read!\n");         exit(0);     }     n = fread(buf, 1, N, fp1);     for (i = 0;i < n;++i)     {         printf("%lx\n", buf[i]);     }         for (i = 0;i < n;++i)         {             buf[i] = reverse(buf[i]);         }         printf("after reverse:\n");     for (i = 0;i < n;++i)     {         printf("%lx\n", buf[i]);     }     fwrite(buf, 1, n,fp2);     fclose(fp2);     fclose(fp1);
+}
+先在文件text1.dat中写入 “abc 123” 输出十六进制形式为： 61 62 63 31 32 33 再逆转后输出十六进制形式为： ffffff86 46 ffffffc6 ffffff8c 4c ffffffcc 但书后ASCII码的十六进制码并没有“ffffff86”的形式，是否逆转后超出了书上的字符范围呢？
+ 
+
+
+
+Reply
+
+Starter： 2020-03-05 23:30
+
+
+
+
+
+
+
+
+
+孙甲松
+
+
+
+
+
+
+ 
+ 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">是输出语句printf("%lx\n", buf[i]);的问题，虽然buf[i]是char类型，但是作为printf函数的参数传递时，是把buf[i]的值作为int类型数据传递，当buf[i]的十六进制值为86，最高位为1时，即为负数的补码，扩展为32位的ffffff86传递并打印出来，除非把：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">char buf[N];</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">改为：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt"><strong>unsigned</strong> char buf[N];</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">无论buf[i]如何颠倒，始终是当做正数，此时打印结果为：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">61</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">62</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">63</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">31</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">32</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">33</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">after reverse:</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">86</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">46</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">c6</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">8c</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">4c</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">cc</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">请按任意键继续. . .</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify">&nbsp;</p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">此外，程序头部应该加上：</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">#include &lt;stdlib.h&gt;</span></p> 
+  <p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-size:10.5pt">因为程序中用到了exit函数。</span></p> 
+ 
+
+
+
+
+Reply(0)
+Collapse
+
+1#：2020-03-06 11:42
+
+
+
+
+
+
+Switch to Editor Field
+Switch to Textbox Field
+
+
+
+
+
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		1
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   60
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
