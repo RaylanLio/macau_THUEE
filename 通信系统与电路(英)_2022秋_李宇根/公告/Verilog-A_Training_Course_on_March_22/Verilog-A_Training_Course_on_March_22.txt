@@ -1,0 +1,5 @@
+题目: Verilog-A Training Course on March 22
+发布人: RHEE WOOGEUN
+发布时间: 2022-03-16 10:59
+
+内容: In the next lecture on March 22, we will have a Verilog-A tutorial given by our TA. Since you need to use the Verilog-A tool for the term project, do not miss the class.
