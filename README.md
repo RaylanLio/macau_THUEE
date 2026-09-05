@@ -21,17 +21,17 @@
 
 ## 集成電路學院（前身為微電子與納電子學系，簡稱微納電子系，屬於電子工程系的其中一個分流方向）培養方案相關課程資訊
 
-||信号与系统|数字信号处理|
-|--|--|--|
-|授課學期|2020秋|2022春|
-|授課老師|姜汉钧|谢翔|
-|正課課件|:white_check_mark:|:white_check_mark:|
-|習題課題目課件|:white_check_mark:|:x:|
-|習題課答案課件|:white_check_mark:|:x:|
-|作業存檔|:white_check_mark:|:white_check_mark:|
-|作業答案|:white_check_mark:|:white_check_mark:|
-|是否有大作業|:white_check_mark:|:white_check_mark:|
-|期中考形式|半開卷，筆試|閉卷，筆試|
-|期末考形式|半開卷，筆試|閉卷，筆試|
-|往年卷|:x:|:x:|
-|備註|半開卷可帶的材料為兩張 A4 紙，所有考試內容需要濃縮至兩張 A4 紙中；姜老師的課件是英文，但是授課語言及考試卷都是中文|--|
+||信号与系统|集成电路基础(1)|集成电路基础(2)|数字信号处理|
+|--|--|--|--|--|
+|授課學期|2020秋|2020秋|2021春|2022春|
+|授課老師|姜汉钧|吴行军|池保勇|谢翔|
+|正課課件|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|
+|習題課題目課件|:white_check_mark:|:x:|:white_check_mark:|:x:|
+|習題課答案課件|:white_check_mark:|:x:|:white_check_mark:|:x:|
+|作業存檔|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|
+|作業答案|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|
+|是否有大作業|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|
+|期中考形式|半開卷，筆試|閉卷，筆試|半開卷，筆試|開卷，筆試|
+|期末考形式|半開卷，筆試|閉卷，筆試|半開卷，筆試|半開卷，筆試|
+|往年卷|:x:|:x:|:x:|:x:|
+|備註|半開卷可帶的材料為兩張 A4 紙，所有考試內容需要濃縮至兩張 A4 紙中；姜老師的課件是英文，但是授課語言及考試卷都是中文|半開卷可帶的材料為兩張 A4 紙，所有考試內容需要濃縮至兩張 A4 紙中；大作業是用 cadence 寫一個超前進位加法器|開卷可帶的材料為包含不聯網的電腦及紙質材料；半開卷可帶的材料為一張 A4 紙，所有考試內容需要濃縮至一張 A4 紙中；大作業是用 Hspice 做一個帶隙基準源|--|
