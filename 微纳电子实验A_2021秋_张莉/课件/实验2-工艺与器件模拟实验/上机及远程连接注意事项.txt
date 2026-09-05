@@ -1,0 +1,10 @@
+
+上机前启动软件前需运行以下命令：
+
+source /data2/synopsys.sh
+
+source /data2/cadence.sh
+
+source /data2/mentor.sh
+
+可以把这三行添加到个人账号下的.bashrc或者.bash_profile中，就可以避免每次启动软件手动source。
