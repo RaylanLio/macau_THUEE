@@ -1,0 +1,109 @@
+课程：电子电路与系统基础实验(1)
+内容：实验二的说明
+学号：2e11b456f1b44a637b11276c52fceca2
+姓名：孙忆南
+发布时间:2020-03-21 22:51:01
+最后回复：孙忆南
+回复时间：2020-03-21 22:51:01
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic实验二的说明
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+孙忆南
+
+
+
+
+（1）示波器的垂直和水平调节在粗调节时以1-2-5为步进档位，即100mV/div, 200mV/div, 500mV/div，然后是1V/div。当然如果启用微调功能，则档位可几乎连续变化。
+（2）1%的五色环电阻，一般也采用E24作为标称值。
+（3）第3题中，正弦电压源的参数采用SPICE的定义。
+Vname N1 N2 SIN(VO VA FREQ TD THETA PHASE)
+ Vname = VO + VA exp[-THETA.(t - TD)] sin[2pi.f (t - TD) + (Phase/360)]
+其中，VO - offset voltage in volt. VA - amplitude in volt. f = FREQ - the frequency in herz. TD - delay in seconds THETA - damping factor per second Phase - phase in degrees
+（4）五色环电阻第四个色环表示，在前三个色环表示的数字的基础上添加零的个数。比如棕绿黑红棕电阻，表示15000Ω，即15k的电阻。
+
+
+
+Reply
+
+Starter： 2020-03-21 22:51
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		0
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   278
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

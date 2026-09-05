@@ -1,0 +1,105 @@
+课程：电子电路与系统基础实验(1)
+内容：无法安装仿真软件的同学看过来
+学号：2e11b456f1b44a637b11276c52fceca2
+姓名：孙忆南
+发布时间:2020-03-08 10:55:44
+最后回复：孙忆南
+回复时间：2020-03-08 10:55:44
+
+
+This is a real-name registration system.Please abide by the relevant laws and regulations of the state when publishing topics or doing other operations.
+
+
+
+
+
+
+
+Topic无法安装仿真软件的同学看过来
+
+
+
+Reply
+
+
+
+
+
+
+
+
+
+孙忆南
+
+
+
+
+可以使用在线仿真软件立创EDA，网址：https://lceda.cn/。
+使用方法可以参照：https://www.bilibili.com/video/av62629582
+缺点是无法直接显示X-Y模式，不过可以将波形保存成CSV格式，然后利用Excel等软件画图。
+
+
+
+Reply
+
+Starter： 2020-03-08 10:55
+
+
+
+
+
+
+
+
+
+
+likes
+
+
+					        		Replies  
+					        		0
+
+
+					        		Views
+			        		  		
+			        		  		  
+			        		  		  
+			        		  		   144
+			        		  		  
+			        		  		
+
+
+
+
+
+
+
+
+ReplySwitch to Editor FieldSwitch to Textbox Field
+
+
+
+
+
+
+
+Add Attach.(1G limited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
