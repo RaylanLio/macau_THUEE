@@ -13,7 +13,7 @@
 |習題課答案課件|:white_check_mark:|:x:|:white_check_mark:|:x:|:x:|:white_check_mark:|:x:|:x:|:x:|:white_check_mark:|:x:|:white_check_mark:|:x:|:x:|
 |作業存檔|:x:|:white_check_mark:|:x:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:white_check_mark:|:x:|:white_check_mark:|:white_check_mark:|:white_check_mark:|
 |作業答案|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:white_check_mark:|:x:|:x:|:white_check_mark:|:white_check_mark:|:white_check_mark:|
-|是否有大作業|:x:|:x:|:x:|:white_check_mark:|:x:|:x:|:white_check_mark:|:x:|:x:|:x:|:x:|:x:|:x:|:x:|
+|是否有大作業|:x:|:x:|:x:|:white_check_mark:|:x:|:x:|:white_check_mark:|:x:|:x:|:x:|:white_check_mark:|:x:|:x:|:x:|
 |期中考形式|閉卷，筆試|:x:|閉卷，筆試|:x:|:x:|閉卷，筆試|:x:|:x:|:x:|半開卷，筆試|:x:|半開卷，筆試|開卷，筆試|閉卷，筆試|
 |期末考形式|閉卷，筆試|閉卷，筆試|閉卷，筆試|:x:|閉卷，筆試＋機試|閉卷，筆試|閉卷，筆試|閉卷，筆試|:x:|半開卷，筆試|閉卷，筆試+機試|半開卷，筆試|開卷，筆試|閉卷，筆試|
 |往年卷|:x:|:x:|:x:|:x:|:x:|:x:|:x:|:white_check_mark:|:x:|:white_check_mark:|:x:|:x:|:x:|:x:|
